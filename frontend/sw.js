@@ -1,6 +1,6 @@
 // Service worker Metika — offline-first.
 // NAIKKAN CACHE_VERSION setiap kali aset frontend atau konten berubah.
-const CACHE_VERSION = 'lb-v1.2.1';
+const CACHE_VERSION = 'lb-v1.2.2';
 const SHELL = [
   './',
   'index.html',

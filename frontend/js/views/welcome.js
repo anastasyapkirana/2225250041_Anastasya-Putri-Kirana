@@ -4,7 +4,7 @@ import { renderVisual } from '../components/viz.js';
 
 const SLIDES = [
   { title: 'Belajar sedikit demi sedikit', text: 'Satu konsep per halaman.', visual: 'diff:3,7,11,15' },
-  { title: 'Bingung? Ada petunjuk', visual: null, formula: true },
+  { title: 'Bingung? Ada petunjuk', text: 'Tekan 💡 kapan saja.', visual: null, formula: true },
   { title: 'Pola ada di sekitar kita', text: 'Baris kursi pun membentuk barisan.', visual: 'seats:6,2,3' },
 ];
 
