@@ -1,0 +1,73 @@
+/* Token desain — palet Ice & Butter. Lihat docs/04-design-system.md.
+   Jangan menulis hex di file lain; pakai variabel di sini. */
+@font-face {
+  font-family: 'Nunito';
+  src: url('../assets/fonts/nunito.woff2') format('woff2');
+  font-weight: 200 1000;
+  font-display: swap;
+}
+
+:root {
+  /* Utama */
+  --cobalt-500: #7DA7D9;  /* soft cobalt */
+  --butter-300: #FFF7CC;  /* butter yellow */
+
+  /* Pendukung */
+  --navy-900: #2F4860;
+  --white: #FFFFFF;
+  --ice-100: #DCEEFF;
+
+  /* Turunan */
+  --cobalt-700: #3F6FA8;
+  --cobalt-800: #345E91;
+  --cobalt-300: #A9C6E8;
+  --cobalt-100: #EAF2FB;
+  --butter-500: #F5D96B;
+  --butter-100: #FFFBE6;
+  --navy-600: #5A6F85;
+  --navy-300: #9FB0C2;
+  --line: #D5E2F0;
+
+  /* Warna ilustrasi permainan (hanya untuk gambar, bukan teks) */
+  --game-water: #A9C6E8;
+  --game-pad: #8FC79A;
+  --game-pad-dark: #5FAF72;
+  --game-sky: #EAF2FB;
+  --game-wood: #C98F5B;
+
+  --success-600: #2F7D5B;
+  --success-100: #E3F4EA;
+  --error-600: #B5483E;
+  --error-100: #FBE7E4;
+
+  /* Peran */
+  --bg: var(--ice-100);
+  --surface: var(--white);
+  --surface-warm: var(--butter-300);
+  --text: var(--navy-900);
+  --text-muted: var(--navy-600);
+  --primary: var(--cobalt-500);
+  --on-primary: var(--navy-900);
+  --link: var(--cobalt-700);
+
+  /* Tipografi */
+  --font: 'Nunito', 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+  --fs-display: 2rem;
+  --fs-h1: 1.5rem;
+  --fs-h2: 1.25rem;
+  --fs-body: 1.0625rem;
+  --fs-small: 0.875rem;
+  --fs-button: 1.125rem;
+
+  /* Spasi & bentuk */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px;
+  --radius-sm: 10px; --radius-md: 16px; --radius-lg: 24px; --radius-pill: 999px;
+  --shadow-card: 0 4px 16px rgba(47, 72, 96, 0.08);
+  --shadow-fab: 0 8px 24px rgba(47, 72, 96, 0.22);
+  --content-max: 520px;
+  --nav-h: 68px;
+  --tap: 44px;
+}
+
+html[data-font='large'] { font-size: 115%; }

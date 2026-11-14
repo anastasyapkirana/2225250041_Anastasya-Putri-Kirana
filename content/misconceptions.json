@@ -1,0 +1,13 @@
+{
+  "M1": { "expr": "a + n * b", "msg": "Sepertinya kamu mengalikan b dengan n. Dari U₁ ke Uₙ hanya ada (n − 1) lompatan." },
+  "M2": { "expr": "(n - 1) * b", "msg": "Kamu baru menghitung total lompatannya. Jangan lupa mulai dari suku pertama a." },
+  "M3": { "expr": "(a + n - 1) * b", "msg": "Urutan hitungnya tertukar. Kalikan dulu (n − 1) × b, baru tambahkan a." },
+  "M4": { "expr": "a + (n - 1) * abs(b)", "msg": "Barisannya turun, jadi bedanya negatif. Coba pakai b yang bernilai negatif." },
+  "M5": { "expr": "-b", "msg": "Beda dihitung terbalik. Beda = suku sesudah − suku sebelum." },
+  "M6": { "expr": "a + (n - 1) * (a + b)", "msg": "b adalah selisih antarsuku, bukan suku kedua." },
+  "M7": { "expr": "n * (2 * a + (n - 1) * b) / 2", "msg": "Itu jumlah semua suku. Yang ditanya hanya satu suku, yaitu suku ke-n." },
+  "M8": { "near": true, "msg": "Hampir! Langkahmu mungkin sudah benar. Coba periksa lagi perkalian dan penjumlahannya." },
+  "M9": { "expr": "(un - a) / b", "msg": "Kamu lupa menambah 1. Hasil (Uₙ − a) ÷ b adalah banyak lompatan, jadi n = lompatan + 1." },
+  "M10": { "expr": "(un - a) / n", "msg": "Kamu membagi dengan n. Dari U₁ ke Uₙ ada (n − 1) lompatan, jadi bagi dengan (n − 1)." },
+  "M11": { "expr": "u2", "msg": "Itu suku kedua. b adalah selisihnya: U₂ − U₁." }
+}

@@ -1,0 +1,17 @@
+[project]
+name = "metika"
+version = "1.0.0"
+description = "PWA pembelajaran Barisan Aritmetika berbasis Cognitive Load Theory"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["backend/tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["B008"]

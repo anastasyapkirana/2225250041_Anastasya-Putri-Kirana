@@ -1,0 +1,60 @@
+{
+  "id": "m5",
+  "title": "Mencari yang Belum Diketahui",
+  "goal": "Mencari n, a, atau b jika unsur lain diketahui",
+  "steps": [
+    {
+      "kind": "hook",
+      "title": "Dibalik",
+      "text": "Kalau U<sub>n</sub> sudah diketahui, bisakah kita mencari n, a, atau b?",
+      "reveal": "Bisa! Rumusnya sama. Kita hanya membaliknya."
+    },
+    {
+      "kind": "concept",
+      "title": "Mencari n",
+      "text": "Masukkan semua yang diketahui ke U<sub>n</sub> = a + (n − 1)b. Lalu selesaikan seperti persamaan: kurangi a, bagi dengan b, lalu tambah 1."
+    },
+    {
+      "kind": "example",
+      "title": "Contoh 1: mencari n",
+      "problem": "Barisan <b>7, 11, 15, …, 87</b>. Bilangan 87 suku ke berapa?",
+      "steps": ["87 = 7 + (n − 1) × 4", "80 = (n − 1) × 4", "n − 1 = 80 ÷ 4 = 20", "n = <b>21</b>"]
+    },
+    {
+      "kind": "example",
+      "title": "Contoh 2: mencari b",
+      "problem": "Diketahui <b>a = 4</b> dan <b>U<sub>6</sub> = 29</b>. Tentukan b.",
+      "steps": ["29 = 4 + (6 − 1)b", "29 = 4 + 5b", "25 = 5b", "b = <b>5</b>"]
+    },
+    {
+      "kind": "concept",
+      "title": "Dua suku diketahui",
+      "text": "Jika dua suku diketahui, hitung lompatan di antaranya. Dari U<sub>3</sub> ke U<sub>7</sub> ada 7 − 3 = <b>4 lompatan</b>.",
+      "visual": "jumps:3,4,7"
+    },
+    {
+      "kind": "example",
+      "title": "Contoh 3: mencari a dan b",
+      "problem": "Diketahui <b>U<sub>3</sub> = 11</b> dan <b>U<sub>7</sub> = 27</b>. Tentukan a dan b.",
+      "steps": ["Dari U<sub>3</sub> ke U<sub>7</sub> ada 4 lompatan.", "4b = 27 − 11 = 16, jadi <b>b = 4</b>", "U<sub>3</sub> = a + 2b → 11 = a + 8", "<b>a = 3</b>"]
+    },
+    {
+      "kind": "faded",
+      "title": "Coba lengkapi",
+      "problem": "Barisan <b>3, 8, 13, …, 58</b>. Bilangan 58 suku ke berapa?",
+      "steps": ["58 = 3 + (n − 1) × 5", "55 = (n − 1) × 5", "n − 1 = [[11]]", "n = [[12]]"]
+    },
+    { "kind": "practice", "title": "Latihan", "templates": ["T-find-n", "T-find-b", "T-two-terms"], "count": 5 },
+    {
+      "kind": "quiz",
+      "title": "Kuis Modul 5",
+      "items": [
+        { "type": "numeric", "prompt": "Barisan 2, 5, 8, …, 50. Bilangan 50 suku ke-…", "answer": 17, "explanation": "50 = 2 + (n − 1) × 3 → n − 1 = 16 → n = 17." },
+        { "type": "numeric", "prompt": "Diketahui a = 10 dan U<sub>5</sub> = 30. Nilai b = …", "answer": 5, "explanation": "30 = 10 + 4b → 4b = 20 → b = 5." },
+        { "type": "numeric", "prompt": "Diketahui U<sub>2</sub> = 7 dan U<sub>6</sub> = 19. Nilai b = …", "answer": 3, "explanation": "Ada 4 lompatan: 4b = 19 − 7 = 12 → b = 3." },
+        { "type": "numeric", "prompt": "Diketahui U<sub>2</sub> = 7 dan U<sub>6</sub> = 19. Nilai a = …", "answer": 4, "explanation": "U<sub>2</sub> = a + b → 7 = a + 3 → a = 4." },
+        { "type": "mcq", "prompt": "Dari (n − 1) × 3 = 27, nilai n adalah …", "options": ["9", "10", "27"], "answer": 1, "explanation": "n − 1 = 9, jadi n = 10." }
+      ]
+    }
+  ]
+}

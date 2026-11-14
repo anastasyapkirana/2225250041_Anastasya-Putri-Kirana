@@ -1,0 +1,84 @@
+{
+  "id": "m2",
+  "title": "Beda (b)",
+  "goal": "Menentukan beda dan mengenali barisan aritmetika",
+  "steps": [
+    {
+      "kind": "hook",
+      "title": "Lompatan yang sama",
+      "text": "Katak melompat dari 2 ke 5, lalu ke 8, lalu ke 11. Apa yang sama dari setiap lompatannya?",
+      "visual": "jumps:2,3,4",
+      "reveal": "Setiap lompatan selalu <b>+3</b>."
+    },
+    {
+      "kind": "concept",
+      "title": "Beda",
+      "text": "<b>Beda</b> adalah selisih dua suku yang berurutan. Kita menyebutnya <span class=\"chip chip-b\">b</span>.<span class=\"formula\">b = U<sub>2</sub> − U<sub>1</sub></span>",
+      "visual": "diff:5,8,11,14"
+    },
+    {
+      "kind": "concept",
+      "title": "Barisan aritmetika",
+      "text": "Jika bedanya <b>selalu sama</b>, barisan itu disebut <b>barisan aritmetika</b>.",
+      "visual": "jumps:5,3,4"
+    },
+    {
+      "kind": "concept",
+      "title": "Beda negatif",
+      "text": "Barisan turun punya beda negatif.<span class=\"formula\">20, 17, 14 → b = 17 − 20 = −3</span>",
+      "visual": "diff:20,17,14,11"
+    },
+    {
+      "kind": "concept",
+      "title": "Bukan aritmetika",
+      "text": "Pada 1, 2, 4, 8 selisihnya 1, 2, 4. Selisihnya tidak tetap, jadi <b>bukan</b> barisan aritmetika.",
+      "visual": "diff:1,2,4,8"
+    },
+    {
+      "kind": "example",
+      "title": "Contoh 1",
+      "problem": "Apakah <b>5, 8, 11, 14</b> barisan aritmetika? Berapa bedanya?",
+      "steps": ["8 − 5 = 3", "11 − 8 = 3", "14 − 11 = 3", "Selisihnya selalu 3. Jadi aritmetika dengan <b>b = 3</b>."]
+    },
+    {
+      "kind": "example",
+      "title": "Contoh 2",
+      "problem": "Barisan <b>50, 46, 42, 38</b>. Berapa bedanya?",
+      "steps": ["b = U<sub>2</sub> − U<sub>1</sub> = 46 − 50", "= <b>−4</b>", "Bedanya negatif karena barisannya turun."]
+    },
+    {
+      "kind": "example",
+      "title": "Contoh 3",
+      "problem": "Apakah <b>2, 5, 9, 14</b> barisan aritmetika?",
+      "steps": ["5 − 2 = 3", "9 − 5 = 4", "14 − 9 = 5", "Selisihnya berubah. Jadi <b>bukan</b> barisan aritmetika."]
+    },
+    {
+      "kind": "explain",
+      "title": "Jelaskan dengan kata-katamu",
+      "question": "Mengapa b = U<sub>2</sub> − U<sub>1</sub>, bukan U<sub>1</sub> − U<sub>2</sub>?",
+      "options": [
+        { "text": "Beda menunjukkan berapa yang ditambahkan untuk sampai ke suku berikutnya.", "correct": true, "why": "Tepat! U<sub>1</sub> + b = U<sub>2</sub>, jadi b = U<sub>2</sub> − U<sub>1</sub>." },
+        { "text": "Karena U<sub>2</sub> selalu lebih besar.", "correct": false, "why": "Tidak selalu. Pada barisan turun, U<sub>2</sub> lebih kecil." },
+        { "text": "Supaya hasilnya positif.", "correct": false, "why": "Beda boleh negatif, misalnya pada barisan turun." }
+      ]
+    },
+    {
+      "kind": "faded",
+      "title": "Coba lengkapi",
+      "problem": "Barisan <b>9, 16, 23, 30</b>. Tentukan bedanya.",
+      "steps": ["b = 16 − 9 = [[7]]", "Cek: 23 − 16 = [[7]]", "Jadi b = 7."]
+    },
+    { "kind": "practice", "title": "Latihan", "templates": ["T-beda", "T-is-arith"], "count": 5 },
+    {
+      "kind": "quiz",
+      "title": "Kuis Modul 2",
+      "items": [
+        { "type": "numeric", "prompt": "Beda barisan 3, 10, 17, 24 adalah …", "answer": 7, "explanation": "10 − 3 = 7." },
+        { "type": "numeric", "prompt": "Beda barisan 40, 34, 28, 22 adalah …", "answer": -6, "explanation": "34 − 40 = −6. Barisannya turun, jadi bedanya negatif." },
+        { "type": "mcq", "prompt": "Barisan mana yang termasuk barisan aritmetika?", "options": ["1, 3, 9, 27", "2, 6, 10, 14", "1, 2, 4, 7"], "answer": 1, "explanation": "2, 6, 10, 14 selalu bertambah 4." },
+        { "type": "mcq", "prompt": "Rumus beda yang benar adalah …", "options": ["b = U<sub>1</sub> − U<sub>2</sub>", "b = U<sub>2</sub> − U<sub>1</sub>", "b = U<sub>2</sub> + U<sub>1</sub>"], "answer": 1, "explanation": "Beda = suku sesudah − suku sebelum." },
+        { "type": "numeric", "prompt": "Barisan aritmetika dengan U<sub>1</sub> = 12 dan U<sub>2</sub> = 9. Nilai b = …", "answer": -3, "explanation": "b = 9 − 12 = −3." }
+      ]
+    }
+  ]
+}

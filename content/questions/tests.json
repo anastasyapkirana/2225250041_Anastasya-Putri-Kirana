@@ -1,0 +1,32 @@
+{
+  "pre": {
+    "title": "Tes Awal",
+    "items": [
+      { "type": "numeric", "indicator": "TP1", "prompt": "Barisan 4, 7, 10, 13, … Suku berikutnya adalah …", "answer": 16 },
+      { "type": "numeric", "indicator": "TP2", "prompt": "Beda barisan 25, 21, 17, 13 adalah …", "answer": -4 },
+      { "type": "mcq", "indicator": "TP2", "prompt": "Manakah yang termasuk barisan aritmetika?", "options": ["3, 6, 12, 24", "5, 9, 13, 17", "1, 2, 4, 7"], "answer": 1 },
+      { "type": "mcq", "indicator": "TP4", "prompt": "Untuk mencari U<sub>12</sub> dari 3, 8, 13, …, nilai a, b, dan n adalah …", "options": ["a = 3, b = 5, n = 12", "a = 5, b = 3, n = 12", "a = 3, b = 12, n = 5"], "answer": 0 },
+      { "type": "numeric", "indicator": "TP4", "prompt": "Barisan 3, 8, 13, … Nilai U<sub>12</sub> = …", "answer": 58 },
+      { "type": "mcq", "indicator": "TP3", "prompt": "Mengapa rumus suku ke-n memakai (n − 1)?", "options": ["Karena dari U<sub>1</sub> ke U<sub>n</sub> ada (n − 1) lompatan", "Supaya hasilnya lebih kecil", "Karena n selalu dikurangi 1 di setiap rumus"], "answer": 0 },
+      { "type": "numeric", "indicator": "TP5", "prompt": "Barisan 4, 10, 16, …, 76. Bilangan 76 suku ke-…", "answer": 13 },
+      { "type": "mcq", "indicator": "TP6-merumuskan", "prompt": "Baris pertama stadion berisi 20 kursi. Setiap baris bertambah 4 kursi. Model barisannya adalah …", "options": ["20, 24, 28, …", "4, 24, 44, …", "20, 80, 320, …"], "answer": 0 },
+      { "type": "numeric", "indicator": "TP6-menafsirkan", "prompt": "Dari soal sebelumnya, banyak kursi di baris ke-25 adalah …", "answer": 116 },
+      { "type": "mcq", "indicator": "TP6-bernalar", "prompt": "Paket A: bulan ke-1 Rp30.000, naik Rp4.000 tiap bulan. Paket B: bulan ke-1 Rp42.000, naik Rp1.000 tiap bulan. Di bulan ke-6, paket yang lebih murah adalah …", "options": ["Paket A", "Paket B", "Sama"], "answer": 1 }
+    ]
+  },
+  "post": {
+    "title": "Tes Akhir",
+    "items": [
+      { "type": "numeric", "indicator": "TP1", "prompt": "Barisan 6, 11, 16, 21, … Suku berikutnya adalah …", "answer": 26 },
+      { "type": "numeric", "indicator": "TP2", "prompt": "Beda barisan 31, 28, 25, 22 adalah …", "answer": -3 },
+      { "type": "mcq", "indicator": "TP2", "prompt": "Manakah yang termasuk barisan aritmetika?", "options": ["2, 4, 8, 16", "1, 4, 9, 16", "7, 12, 17, 22"], "answer": 2 },
+      { "type": "mcq", "indicator": "TP4", "prompt": "Untuk mencari U<sub>15</sub> dari 2, 9, 16, …, nilai a, b, dan n adalah …", "options": ["a = 2, b = 15, n = 7", "a = 2, b = 7, n = 15", "a = 7, b = 2, n = 15"], "answer": 1 },
+      { "type": "numeric", "indicator": "TP4", "prompt": "Barisan 2, 9, 16, … Nilai U<sub>15</sub> = …", "answer": 100 },
+      { "type": "mcq", "indicator": "TP3", "prompt": "Dari U<sub>1</sub> ke U<sub>8</sub> ada berapa lompatan?", "options": ["7", "8", "9"], "answer": 0 },
+      { "type": "numeric", "indicator": "TP5", "prompt": "Barisan 5, 9, 13, …, 81. Bilangan 81 suku ke-…", "answer": 20 },
+      { "type": "mcq", "indicator": "TP6-merumuskan", "prompt": "Rak teratas berisi 6 buku. Setiap rak di bawahnya bertambah 3 buku. Model barisannya adalah …", "options": ["6, 9, 12, …", "3, 9, 15, …", "6, 18, 54, …"], "answer": 0 },
+      { "type": "numeric", "indicator": "TP6-menafsirkan", "prompt": "Dari soal sebelumnya, banyak buku di rak ke-10 adalah …", "answer": 33 },
+      { "type": "mcq", "indicator": "TP6-bernalar", "prompt": "Paket A: bulan ke-1 Rp25.000, naik Rp5.000 tiap bulan. Paket B: bulan ke-1 Rp40.000, naik Rp2.000 tiap bulan. Di bulan ke-4, paket yang lebih murah adalah …", "options": ["Paket A", "Paket B", "Sama"], "answer": 0 }
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "evaluate": [
+    { "expr": "a + (n - 1) * b", "env": { "a": 5, "b": 3, "n": 10 }, "result": 32 },
+    { "expr": "a + (n - 1) * b", "env": { "a": 50, "b": -4, "n": 12 }, "result": 6 },
+    { "expr": "a + (n - 1) * b", "env": { "a": 12, "b": 1.5, "n": 10 }, "result": 25.5 },
+    { "expr": "a + n * b", "env": { "a": 5, "b": 3, "n": 10 }, "result": 35 },
+    { "expr": "(a + n - 1) * b", "env": { "a": 5, "b": 3, "n": 10 }, "result": 42 },
+    { "expr": "a + (n - 1) * abs(b)", "env": { "a": 50, "b": -4, "n": 12 }, "result": 94 },
+    { "expr": "n * (2 * a + (n - 1) * b) / 2", "env": { "a": 5, "b": 3, "n": 10 }, "result": 185 },
+    { "expr": "(un - a) / b", "env": { "a": 7, "b": 4, "un": 87 }, "result": 20 },
+    { "expr": "-b", "env": { "b": -3 }, "result": 3 },
+    { "expr": "- -2 * 3", "env": {}, "result": 6 },
+    { "expr": "2 + 3 * 4 - 6 / 3", "env": {}, "result": 12 },
+    { "expr": "a + (k - 1) * b + flag * (k - 1) * (k - 2) / 2", "env": { "a": 1, "b": 2, "flag": 1, "k": 4 }, "result": 10 },
+    { "expr": "floor(7 / 2)", "env": {}, "result": 3 },
+    { "expr": "abs(a + (n - 1) * b) <= 500", "env": { "a": 30, "b": 9, "n": 30 }, "result": true },
+    { "expr": "abs(un) <= 400", "env": { "un": -401 }, "result": false },
+    { "expr": "a − b", "env": { "a": 10, "b": 4 }, "result": 6 }
+  ],
+  "errors": [
+    "__import__('os')",
+    "a ** 2",
+    "x + 1",
+    "1 / 0",
+    "open(1)",
+    "a; b"
+  ],
+  "format": [
+    { "value": 32, "paren": false, "text": "32" },
+    { "value": 19000, "paren": false, "text": "19.000" },
+    { "value": 1234567, "paren": false, "text": "1.234.567" },
+    { "value": 25.5, "paren": false, "text": "25,5" },
+    { "value": -4, "paren": false, "text": "−4" },
+    { "value": -4, "paren": true, "text": "(−4)" },
+    { "value": 0.1, "paren": false, "text": "0,1" },
+    { "value": -1500.25, "paren": false, "text": "−1.500,25" }
+  ],
+  "render": [
+    { "template": "U<sub>{n}</sub> = {a} + ({n} − 1) × {b|p}", "env": { "a": 50, "b": -4, "n": 12 }, "text": "U<sub>12</sub> = 50 + (12 − 1) × (−4)" },
+    { "template": "= {a} + {(n - 1) * b|p}", "env": { "a": 50, "b": -4, "n": 12 }, "text": "= 50 + (−44)" }
+  ]
+}

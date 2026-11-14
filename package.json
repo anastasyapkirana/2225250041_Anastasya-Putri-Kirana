@@ -1,0 +1,9 @@
+{
+  "name": "metika",
+  "private": true,
+  "type": "module",
+  "description": "Hanya untuk menjalankan test engine JS dengan node --test. Tidak ada dependensi atau build step.",
+  "scripts": {
+    "test": "node --test \"frontend/tests/*.test.mjs\""
+  }
+}

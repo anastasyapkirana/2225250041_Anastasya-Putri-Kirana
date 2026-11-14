@@ -1,0 +1,45 @@
+{
+  "mental_effort": {
+    "title": "Seberapa berat usaha mentalmu di modul ini?",
+    "scale": [
+      { "value": 1, "emoji": "😌", "label": "Sangat ringan" },
+      { "value": 2, "emoji": "🙂", "label": "Ringan" },
+      { "value": 3, "emoji": "😐", "label": "Sedang" },
+      { "value": 4, "emoji": "😓", "label": "Berat" },
+      { "value": 5, "emoji": "😫", "label": "Sangat berat" }
+    ]
+  },
+  "cl_questionnaire": {
+    "title": "Angket Beban Kognitif",
+    "intro": "Pilih 0 (sangat tidak setuju) sampai 10 (sangat setuju).",
+    "min": 0,
+    "max": 10,
+    "items": [
+      { "id": "IL1", "dim": "IL", "text": "Topik barisan aritmetika terasa sangat rumit." },
+      { "id": "IL2", "dim": "IL", "text": "Rumus-rumus di aplikasi ini terasa sangat rumit." },
+      { "id": "IL3", "dim": "IL", "text": "Istilah dan konsep di aplikasi ini terasa sangat rumit." },
+      { "id": "EL1", "dim": "EL", "text": "Penjelasan di aplikasi ini tidak jelas." },
+      { "id": "EL2", "dim": "EL", "text": "Penjelasan di aplikasi ini kurang membantu saya belajar." },
+      { "id": "EL3", "dim": "EL", "text": "Instruksi di aplikasi ini penuh kata-kata yang membingungkan." },
+      { "id": "GL1", "dim": "GL", "text": "Aplikasi ini membuat saya lebih paham barisan aritmetika." },
+      { "id": "GL2", "dim": "GL", "text": "Aplikasi ini membuat saya lebih paham rumus suku ke-n." },
+      { "id": "GL3", "dim": "GL", "text": "Aplikasi ini membuat saya lebih paham arti a, b, dan n." },
+      { "id": "GL4", "dim": "GL", "text": "Aplikasi ini membuat saya lebih paham cara mengerjakan soal cerita." }
+    ]
+  },
+  "practicality": {
+    "title": "Angket Kepraktisan",
+    "intro": "Pilih 1 (sangat tidak setuju) sampai 5 (sangat setuju).",
+    "min": 1,
+    "max": 5,
+    "items": [
+      { "id": "P1", "text": "Instruksi di aplikasi mudah dipahami." },
+      { "id": "P2", "text": "Saya tahu harus menekan apa untuk lanjut." },
+      { "id": "P3", "text": "Petunjuk (💡) membantu saya saat bingung." },
+      { "id": "P4", "text": "Kartu Rumus membantu saat saya lupa rumus." },
+      { "id": "P5", "text": "Contoh soalnya cukup banyak." },
+      { "id": "P6", "text": "Aplikasi ini lancar di HP saya." },
+      { "id": "P7", "text": "Saya ingin memakai aplikasi ini lagi." }
+    ]
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "T-next": {
+    "topic": "pola",
+    "title": "Suku berikutnya",
+    "params": { "a": [-5, 40], "b": [-7, 9] },
+    "exclude": { "b": [0] },
+    "prompt": "Barisan: <b>{u1}, {u2}, {u3}, {u4}, …</b><br>Tentukan dua suku berikutnya.",
+    "fields": [
+      { "key": "u5", "label": "U<sub>5</sub> =", "answer": "u5", "misconceptions": ["M8"] },
+      { "key": "u6", "label": "U<sub>6</sub> =", "answer": "u6", "misconceptions": ["M8"] }
+    ],
+    "hints": [
+      "Cari selisih dua suku yang berdekatan.",
+      "Selisihnya {b}. Tambahkan ke suku terakhir.",
+      "U<sub>5</sub> = {u4} + {b|p} = ▢"
+    ],
+    "solution": [
+      "Beda: {u2} − {u1|p} = {b}",
+      "U<sub>5</sub> = {u4} + {b|p} = <b>{u5}</b>",
+      "U<sub>6</sub> = {u5} + {b|p} = <b>{u6}</b>"
+    ]
+  },
+  "T-beda": {
+    "topic": "beda",
+    "title": "Menentukan beda",
+    "params": { "a": [-10, 40], "b": [-8, 9] },
+    "exclude": { "b": [0] },
+    "prompt": "Barisan: <b>{u1}, {u2}, {u3}, {u4}, …</b><br>Tentukan bedanya.",
+    "fields": [
+      { "key": "b", "label": "b =", "answer": "b", "misconceptions": ["M5", "M11"] }
+    ],
+    "hints": [
+      "Beda = suku sesudah − suku sebelum.",
+      "Hitung {u2} − {u1|p}.",
+      "b = {u2} − {u1|p} = ▢"
+    ],
+    "solution": [
+      "b = U<sub>2</sub> − U<sub>1</sub> = {u2} − {u1|p} = <b>{b}</b>",
+      "Cek: {u3} − {u2|p} = {u3 - u2}"
+    ]
+  },
+  "T-is-arith": {
+    "topic": "beda",
+    "title": "Aritmetika atau bukan?",
+    "params": { "a": [1, 20], "b": [1, 6], "flag": [0, 1] },
+    "seq": "a + (k - 1) * b + flag * (k - 1) * (k - 2) / 2",
+    "prompt": "Apakah <b>{u1}, {u2}, {u3}, {u4}, {u5}</b> barisan aritmetika?",
+    "fields": [
+      { "key": "jenis", "type": "choice", "label": "Jawaban", "options": ["Ya, aritmetika", "Bukan aritmetika"], "answer": "flag" }
+    ],
+    "hints": [
+      "Hitung selisih setiap dua suku yang berdekatan.",
+      "Aritmetika jika semua selisihnya sama.",
+      "Selisihnya: {u2 - u1}, {u3 - u2}, {u4 - u3}, {u5 - u4}. Sama semua?"
+    ],
+    "solution": [
+      "Selisihnya: {u2 - u1}, {u3 - u2}, {u4 - u3}, {u5 - u4}."
+    ]
+  },
+  "T-identify": {
+    "topic": "abn",
+    "title": "Menentukan a, b, n",
+    "params": { "a": [-10, 30], "b": [-6, 9], "n": [6, 30] },
+    "exclude": { "b": [0] },
+    "prompt": "Barisan: <b>{u1}, {u2}, {u3}, {u4}, …</b><br>Kamu ingin mencari U<sub>{n}</sub>. Tentukan a, b, dan n.",
+    "fields": [
+      { "key": "a", "label": "a =", "answer": "a", "chip": "a" },
+      { "key": "b", "label": "b =", "answer": "b", "chip": "b", "misconceptions": ["M5", "M11"] },
+      { "key": "n", "label": "n =", "answer": "n", "chip": "n" }
+    ],
+    "hints": [
+      "a = suku pertama, b = beda, n = nomor suku yang dicari.",
+      "b = {u2} − {u1|p}. n adalah angka kecil di U<sub>{n}</sub>.",
+      "a = {u1}, b = ▢, n = ▢"
+    ],
+    "solution": [
+      "a = suku pertama = <b>{a}</b>",
+      "b = {u2} − {u1|p} = <b>{b}</b>",
+      "n = nomor suku yang dicari = <b>{n}</b>"
+    ]
+  },
+  "T-un-easy": {
+    "topic": "un",
+    "title": "Suku ke-n (dasar)",
+    "params": { "a": [1, 15], "b": [1, 6], "n": [5, 12] },
+    "prompt": "Barisan: <b>{u1}, {u2}, {u3}, {u4}, …</b><br>Tentukan U<sub>{n}</sub>.",
+    "fields": [
+      { "key": "un", "label": "U<sub>{n}</sub> =", "answer": "a + (n - 1) * b", "misconceptions": ["M1", "M2", "M3", "M6", "M7", "M8"] }
+    ],
+    "check": true,
+    "hints": [
+      "Tentukan dulu a, b, dan n.",
+      "a = {a}, b = {b}, n = {n}. Masukkan ke U<sub>n</sub> = a + (n − 1)b.",
+      "U<sub>{n}</sub> = {a} + ({n} − 1) × {b|p} = {a} + ▢"
+    ],
+    "solution": [
+      "a = {a}, b = {b}, n = {n}",
+      "U<sub>{n}</sub> = {a} + ({n} − 1) × {b|p}",
+      "= {a} + {n - 1} × {b|p} = {a} + {(n - 1) * b|p}",
+      "= <b>{a + (n - 1) * b}</b>"
+    ]
+  },
+  "T-un": {
+    "topic": "un",
+    "title": "Suku ke-n",
+    "params": { "a": [-10, 30], "b": [-6, 9], "n": [6, 30] },
+    "exclude": { "b": [0] },
+    "constraints": ["abs(a + (n - 1) * b) <= 500"],
+    "prompt": "Barisan: <b>{u1}, {u2}, {u3}, {u4}, …</b><br>Tentukan U<sub>{n}</sub>.",
+    "fields": [
+      { "key": "un", "label": "U<sub>{n}</sub> =", "answer": "a + (n - 1) * b", "misconceptions": ["M1", "M2", "M3", "M4", "M6", "M7", "M8"] }
+    ],
+    "check": true,
+    "hints": [
+      "Tentukan dulu a, b, dan n.",
+      "a = suku pertama. b = U<sub>2</sub> − U<sub>1</sub>. n = {n}.",
+      "U<sub>{n}</sub> = {a} + ({n} − 1) × {b|p} = {a} + ▢"
+    ],
+    "solution": [
+      "a = {a}, b = {b}, n = {n}",
+      "U<sub>{n}</sub> = {a} + ({n} − 1) × {b|p}",
+      "= {a} + {n - 1} × {b|p} = {a} + {(n - 1) * b|p}",
+      "= <b>{a + (n - 1) * b}</b>"
+    ]
+  },
+  "T-find-n": {
+    "topic": "cari",
+    "title": "Mencari n",
+    "params": { "a": [-5, 30], "b": [-5, 8], "n": [8, 40] },
+    "exclude": { "b": [0] },
+    "derived": { "un": "a + (n - 1) * b" },
+    "constraints": ["abs(un) <= 400"],
+    "prompt": "Barisan: <b>{u1}, {u2}, {u3}, …, {un}</b><br>Bilangan {un} adalah suku ke berapa?",
+    "fields": [
+      { "key": "n", "label": "n =", "answer": "n", "misconceptions": ["M9", "M8"] }
+    ],
+    "hints": [
+      "Gunakan U<sub>n</sub> = a + (n − 1)b, lalu cari n.",
+      "{un} = {a} + (n − 1) × {b|p}. Pindahkan {a} dulu.",
+      "(n − 1) × {b|p} = {un - a}, jadi n − 1 = ▢"
+    ],
+    "solution": [
+      "{un} = {a} + (n − 1) × {b|p}",
+      "(n − 1) × {b|p} = {un} − {a|p} = {un - a}",
+      "n − 1 = {un - a} ÷ {b|p} = {n - 1}",
+      "n = <b>{n}</b>"
+    ]
+  },
+  "T-find-b": {
+    "topic": "cari",
+    "title": "Mencari b",
+    "params": { "a": [-10, 30], "b": [-6, 9], "n": [4, 12] },
+    "exclude": { "b": [0] },
+    "derived": { "un": "a + (n - 1) * b" },
+    "prompt": "Suku pertama barisan aritmetika adalah <b>{a}</b> dan <b>U<sub>{n}</sub> = {un}</b>. Tentukan beda b.",
+    "fields": [
+      { "key": "b", "label": "b =", "answer": "b", "misconceptions": ["M10", "M8"] }
+    ],
+    "hints": [
+      "Tulis rumusnya: U<sub>{n}</sub> = a + ({n} − 1)b.",
+      "{un} = {a} + {n - 1}b. Kurangi kedua ruas dengan {a|p}.",
+      "{n - 1}b = {un - a}, jadi b = ▢"
+    ],
+    "solution": [
+      "{un} = {a} + ({n} − 1)b = {a} + {n - 1}b",
+      "{n - 1}b = {un} − {a|p} = {un - a}",
+      "b = {un - a} ÷ {n - 1} = <b>{b}</b>"
+    ]
+  },
+  "T-two-terms": {
+    "topic": "cari",
+    "title": "Dua suku diketahui",
+    "params": { "a": [-5, 20], "b": [-5, 8], "p": [2, 5], "q": [6, 12] },
+    "exclude": { "b": [0] },
+    "derived": { "up": "a + (p - 1) * b", "uq": "a + (q - 1) * b" },
+    "prompt": "Pada barisan aritmetika, <b>U<sub>{p}</sub> = {up}</b> dan <b>U<sub>{q}</sub> = {uq}</b>. Tentukan b dan a.",
+    "fields": [
+      { "key": "b", "label": "b =", "answer": "b", "chip": "b", "misconceptions": ["M8"] },
+      { "key": "a", "label": "a =", "answer": "a", "chip": "a", "misconceptions": ["M8"] }
+    ],
+    "hints": [
+      "Dari U<sub>{p}</sub> ke U<sub>{q}</sub> ada {q - p} lompatan.",
+      "{q - p} × b = {uq} − {up|p} = {uq - up}.",
+      "b = {uq - up} ÷ {q - p} = ▢. Lalu a = {up} − {p - 1} × b."
+    ],
+    "solution": [
+      "Lompatan: {q} − {p} = {q - p}",
+      "{q - p}b = {uq} − {up|p} = {uq - up}, jadi <b>b = {b}</b>",
+      "U<sub>{p}</sub> = a + {p - 1}b → {up} = a + {(p - 1) * b|p}",
+      "<b>a = {a}</b>"
+    ]
+  }
+}

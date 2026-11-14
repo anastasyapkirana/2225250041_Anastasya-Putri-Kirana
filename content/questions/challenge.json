@@ -1,0 +1,21 @@
+{
+  "roundSize": 10,
+  "cards": [
+    { "id": "K01", "text": "Beda barisan 20, 17, 14 adalah 3.", "answer": false, "explanation": "17 − 20 = −3. Bedanya negatif." },
+    { "id": "K02", "text": "2, 4, 8, 16 adalah barisan aritmetika.", "answer": false, "explanation": "Selisihnya 2, 4, 8. Tidak tetap." },
+    { "id": "K03", "text": "Pada U<sub>12</sub>, nilai n = 12.", "answer": true, "explanation": "n adalah nomor suku." },
+    { "id": "K04", "text": "U<sub>5</sub> dari 1, 3, 5, … adalah 9.", "answer": true, "explanation": "1, 3, 5, 7, 9." },
+    { "id": "K05", "text": "Rumus suku ke-n adalah U<sub>n</sub> = a + nb.", "answer": false, "explanation": "Yang benar U<sub>n</sub> = a + (n − 1)b." },
+    { "id": "K06", "text": "Barisan 7, 7, 7, 7 punya beda 0.", "answer": true, "explanation": "7 − 7 = 0. Ini barisan aritmetika dengan b = 0." },
+    { "id": "K07", "text": "Dari U<sub>1</sub> ke U<sub>10</sub> ada 10 lompatan.", "answer": false, "explanation": "Ada 10 − 1 = 9 lompatan." },
+    { "id": "K08", "text": "Pada barisan 5, 8, 11, …, nilai a = 5.", "answer": true, "explanation": "a adalah suku pertama." },
+    { "id": "K09", "text": "U<sub>10</sub> dari 5, 8, 11, … adalah 32.", "answer": true, "explanation": "5 + 9 × 3 = 32." },
+    { "id": "K10", "text": "Barisan aritmetika yang turun selalu punya beda negatif.", "answer": true, "explanation": "Setiap suku berkurang, jadi b < 0." },
+    { "id": "K11", "text": "Beda barisan 3, 10, 17 adalah 7.", "answer": true, "explanation": "10 − 3 = 7." },
+    { "id": "K12", "text": "U<sub>4</sub> dari 40, 35, 30, … adalah 20.", "answer": false, "explanation": "40, 35, 30, 25. Jadi U<sub>4</sub> = 25." },
+    { "id": "K13", "text": "Jika a = 2 dan b = 3, maka U<sub>3</sub> = 8.", "answer": true, "explanation": "2 + 2 × 3 = 8." },
+    { "id": "K14", "text": "1, 4, 9, 16 adalah barisan aritmetika.", "answer": false, "explanation": "Selisihnya 3, 5, 7. Tidak tetap." },
+    { "id": "K15", "text": "n pada rumus U<sub>n</sub> adalah nilai sukunya.", "answer": false, "explanation": "n adalah nomor suku, bukan nilainya." },
+    { "id": "K16", "text": "Jika U<sub>2</sub> = 9 dan U<sub>3</sub> = 13, maka b = 4.", "answer": true, "explanation": "13 − 9 = 4." }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "m1",
+  "title": "Mengenal Pola dan Barisan",
+  "goal": "Mengenali barisan dan menentukan suku berikutnya",
+  "steps": [
+    {
+      "kind": "hook",
+      "title": "Coba tebak!",
+      "text": "Susunan ubin ini bertambah terus. Berapa ubin di susunan berikutnya?",
+      "visual": "tiles:2,2,4",
+      "reveal": "Jawabannya <b>10 ubin</b>. Setiap susunan bertambah 2."
+    },
+    {
+      "kind": "concept",
+      "title": "Apa itu barisan?",
+      "text": "<b>Barisan</b> adalah bilangan yang disusun berurutan dengan aturan tertentu. Setiap bilangan disebut <b>suku</b>.",
+      "visual": "terms:2,4,6,8"
+    },
+    {
+      "kind": "concept",
+      "title": "Nomor suku",
+      "text": "U<sub>1</sub> adalah suku pertama, U<sub>2</sub> suku kedua, dan seterusnya. Angka kecil di bawah U disebut <b>nomor suku</b>. Nanti kita menyebutnya <span class=\"chip chip-n\">n</span>.",
+      "visual": "terms:3,7,11,15"
+    },
+    {
+      "kind": "concept",
+      "title": "Naik atau turun",
+      "text": "Barisan bisa <b>naik</b>, misalnya 3, 7, 11, 15. Barisan juga bisa <b>turun</b>, misalnya 20, 17, 14, 11.",
+      "visual": "diff:20,17,14,11"
+    },
+    {
+      "kind": "example",
+      "title": "Contoh 1",
+      "problem": "Barisan <b>3, 7, 11, 15, …</b> Tentukan dua suku berikutnya.",
+      "steps": [
+        "Cari selisihnya: 7 − 3 = 4, 11 − 7 = 4, 15 − 11 = 4.",
+        "Setiap suku bertambah 4.",
+        "15 + 4 = <b>19</b>",
+        "19 + 4 = <b>23</b>"
+      ]
+    },
+    {
+      "kind": "example",
+      "title": "Contoh 2",
+      "problem": "Barisan <b>20, 17, 14, 11, …</b> Tentukan dua suku berikutnya.",
+      "steps": [
+        "Selisihnya: 17 − 20 = −3. Setiap suku berkurang 3.",
+        "11 − 3 = <b>8</b>",
+        "8 − 3 = <b>5</b>"
+      ]
+    },
+    {
+      "kind": "example",
+      "title": "Contoh 3",
+      "problem": "Pola segitiga dari batang korek api memakai <b>3, 5, 7</b> batang. Berapa batang untuk pola berikutnya?",
+      "visual": "matches:3",
+      "steps": [
+        "Selisihnya: 5 − 3 = 2, 7 − 5 = 2.",
+        "Setiap pola bertambah 2 batang.",
+        "7 + 2 = <b>9 batang</b>"
+      ]
+    },
+    {
+      "kind": "faded",
+      "title": "Coba lengkapi",
+      "problem": "Barisan <b>6, 10, 14, 18, …</b> Tentukan suku berikutnya.",
+      "steps": [
+        "Selisihnya: 10 − 6 = [[4]]",
+        "Suku berikutnya: 18 + 4 = [[22]]"
+      ]
+    },
+    { "kind": "practice", "title": "Latihan", "templates": ["T-next"], "count": 4 },
+    {
+      "kind": "quiz",
+      "title": "Kuis Modul 1",
+      "items": [
+        { "type": "numeric", "prompt": "Barisan 4, 9, 14, 19, … Suku berikutnya adalah …", "answer": 24, "explanation": "Selisihnya 5, jadi 19 + 5 = 24." },
+        { "type": "numeric", "prompt": "Barisan 30, 26, 22, 18, … Suku berikutnya adalah …", "answer": 14, "explanation": "Setiap suku berkurang 4, jadi 18 − 4 = 14." },
+        { "type": "mcq", "prompt": "Pada barisan 2, 5, 8, 11, nilai U<sub>3</sub> adalah …", "options": ["2", "5", "8", "11"], "answer": 2, "explanation": "U<sub>3</sub> adalah suku ketiga, yaitu 8." },
+        { "type": "mcq", "prompt": "Barisan 50, 45, 40, 35 termasuk barisan …", "options": ["Naik", "Turun"], "answer": 1, "explanation": "Setiap suku berkurang 5, jadi barisannya turun." },
+        { "type": "numeric", "prompt": "Barisan 1, 4, 7, 10, … Nilai U<sub>6</sub> adalah …", "answer": 16, "explanation": "U<sub>5</sub> = 10 + 3 = 13, lalu U<sub>6</sub> = 13 + 3 = 16." }
+      ]
+    }
+  ]
+}
