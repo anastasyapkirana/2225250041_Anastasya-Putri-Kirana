@@ -236,7 +236,7 @@ function tangkap(root, game) {
   const rng = mulberry32(newSeed());
   const GOAL = 10;
   let g = null; let raf = 0; let running = false;
-  let seq; let items = []; let last = 0; let spawnIn = 0; let basketX = 0; let targetX = 0; let dir = 0;
+  let seq; let items = []; let last = 0; let spawnIn = 0; let untilCorrect = 0; let basketX = 0; let targetX = 0; let dir = 0;
   const prompt = h('div', { class: 'seq-bar' });
   const basket = h('div', { class: 'basket', html: '<svg viewBox="0 0 90 44" aria-hidden="true"><path d="M2 6h86l-10 36H12z" fill="#C98F5B"/><path d="M2 6h86" stroke="#8A5A33" stroke-width="5" stroke-linecap="round"/><path d="M14 18h62M18 30h54" stroke="#8A5A33" stroke-width="3"/></svg>' });
   const controls = h('div', { class: 'arena-controls' });
@@ -246,13 +246,18 @@ function tangkap(root, game) {
   }
   function nextSeq() {
     seq = newSeq(rng, g.state.level);
+    untilCorrect = randInt(rng, 2, 4);
     items.forEach((it) => it.el.classList.add('fade-out'));
     setTimeout(() => { items.forEach((it) => it.el.remove()); items = []; }, 250);
     drawPrompt();
   }
   function spawn(W) {
+    // Jawaban benar muncul setelah 1–3 pengecoh (acak), bukan selalu paling awal.
     const hasCorrect = items.some((it) => it.ok && !it.done);
-    const ok = !hasCorrect || rng() < 0.3;
+    let ok;
+    if (hasCorrect) ok = rng() < 0.2;
+    else { untilCorrect--; ok = untilCorrect <= 0; }
+    if (ok) untilCorrect = randInt(rng, 2, 4);
     const pool = [-seq.b, seq.b + 1, seq.b - 1, seq.a + seq.b, seq.b * 2, seq.a].filter((v) => v !== seq.b);
     const value = ok ? seq.b : pool[randInt(rng, 0, pool.length - 1)];
     const el = h('div', { class: `drop drop-${randInt(rng, 0, 2)}` }, fmt(value));
@@ -297,7 +302,7 @@ function tangkap(root, game) {
     items.forEach((it) => it.el.remove()); items = [];
     const W = g.arena.clientWidth;
     basketX = targetX = W / 2; last = 0; spawnIn = 0.3;
-    seq = newSeq(rng, 1); drawPrompt();
+    seq = newSeq(rng, 1); untilCorrect = randInt(rng, 2, 4); drawPrompt();
     running = true; raf = requestAnimationFrame(loop);
   }
   g = shell(root, game, start);
