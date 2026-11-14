@@ -512,6 +512,7 @@
 .hud-item .icon { color: var(--butter-500); }
 .hud-item .icon svg { stroke: var(--navy-900); stroke-width: 1.2; }
 .hud-item.is-hot { background: var(--butter-300); }
+.hud-btn { min-width: 44px; min-height: 44px; justify-content: center; border: 0; font: inherit; cursor: pointer; }
 .game-stage { display: grid; gap: 12px; }
 .game-card { gap: 16px; }
 .game-prompt { font-size: 1.1rem; text-align: center; }

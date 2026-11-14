@@ -36,8 +36,56 @@ function newSeq(rng, level) {
   return { a, b };
 }
 
+// ======================================================= musik latar
+const musicOn = () => store.getSettings().music !== false;
+
+/** Musik latar berulang. Diunduh utuh (bukan streaming) agar ikut tersimpan untuk offline. */
+function gameMusic(src) {
+  let audio = null;
+  let loading = null;
+  let wanted = false;
+  let dead = false;
+  function load() {
+    loading = loading || fetch(src)
+      .then((r) => { if (!r.ok) throw new Error('musik tidak ada'); return r.blob(); })
+      .then((blob) => {
+        if (dead) return null;
+        audio = new Audio(URL.createObjectURL(blob));
+        audio.loop = true;
+        audio.volume = 0.35;
+        if (wanted && musicOn()) audio.play().catch(() => {});
+        return audio;
+      })
+      .catch(() => { loading = null; return null; });
+    return loading;
+  }
+  const onVisibility = () => {
+    if (!audio) return;
+    if (document.hidden) audio.pause();
+    else if (wanted && musicOn()) audio.play().catch(() => {});
+  };
+  document.addEventListener('visibilitychange', onVisibility);
+  if (musicOn()) load();
+  return {
+    play() {
+      wanted = true;
+      if (!musicOn()) return;
+      if (audio) audio.play().catch(() => {});
+      else load();
+    },
+    pause() { wanted = false; if (audio) audio.pause(); },
+    refresh() { if (musicOn()) { if (wanted) this.play(); } else if (audio) audio.pause(); },
+    stop() {
+      dead = true; wanted = false;
+      document.removeEventListener('visibilitychange', onVisibility);
+      if (audio) { audio.pause(); URL.revokeObjectURL(audio.src); audio = null; }
+    },
+  };
+}
+
 // ======================================================= kerangka permainan (HUD + layar mulai/selesai)
 function shell(root, game, start) {
+  const music = gameMusic(`assets/audio/${game.id}.mp3`);
   const hud = h('div', { class: 'game-hud' });
   const arena = h('div', { class: `arena arena-${game.id}` });
   const overlay = h('div', { class: 'arena-overlay' });
@@ -49,7 +97,12 @@ function shell(root, game, start) {
     hud.replaceChildren(
       h('span', { class: 'hud-item', 'aria-label': `${state.hearts} nyawa` }, '❤️'.repeat(state.hearts) + '🤍'.repeat(HEARTS - state.hearts)),
       h('span', { class: 'hud-item' }, `Lv ${state.level}`),
-      h('span', { class: `hud-item ${state.combo >= 3 ? 'is-hot' : ''}` }, `⭐ ${state.score}`));
+      h('span', { class: `hud-item ${state.combo >= 3 ? 'is-hot' : ''}` }, `⭐ ${state.score}`),
+      h('button', {
+        type: 'button', class: 'hud-item hud-btn',
+        'aria-label': musicOn() ? 'Matikan musik' : 'Nyalakan musik', 'aria-pressed': musicOn() ? 'true' : 'false',
+        onClick: () => { store.setSettings({ ...store.getSettings(), music: !musicOn() }); music.refresh(); drawHud(); },
+      }, musicOn() ? '🔊' : '🔇'));
   }
   function floatText(text, x, y, kind = 'good') {
     const t = h('span', { class: `float-text float-${kind}` }, text);
@@ -81,10 +134,11 @@ function shell(root, game, start) {
       h('h2', {}, game.title),
       h('p', {}, game.how),
       best ? h('p', { class: 'muted small' }, `Rekormu: ${best} poin`) : null,
-      button('Main!', { onClick: () => { overlay.classList.add('hidden'); Object.assign(state, { score: 0, hearts: HEARTS, level: 1, combo: 0, correct: 0, tries: 0 }); drawHud(); start(); } })));
+      button('Main!', { onClick: () => { music.play(); overlay.classList.add('hidden'); Object.assign(state, { score: 0, hearts: HEARTS, level: 1, combo: 0, correct: 0, tries: 0 }); drawHud(); start(); } })));
     overlay.classList.remove('hidden');
   }
   function gameOver(win) {
+    music.pause();
     const games = store.get('games', {});
     const isBest = state.score > (games[game.id] || 0);
     store.set('games', { ...games, [game.id]: Math.max(games[game.id] || 0, state.score) });
@@ -102,7 +156,7 @@ function shell(root, game, start) {
     overlay.classList.remove('hidden');
   }
   drawHud();
-  return { arena, state, hit, floatText, showStart, gameOver, drawHud };
+  return { arena, state, hit, floatText, showStart, gameOver, drawHud, music };
 }
 
 // ======================================================= 1. Lompat Katak
@@ -174,7 +228,7 @@ function katak(root, game) {
   g = shell(root, game, start);
   g.arena.prepend(h('div', { class: 'pond' }, h('span', { class: 'ripple r1' }), h('span', { class: 'ripple r2' }), h('span', { class: 'ripple r3' })), seqBar, ...pads, homePad, frog);
   g.showStart();
-  return () => {};
+  return () => g.music.stop();
 }
 
 // ======================================================= 2. Tangkap Beda
@@ -261,7 +315,7 @@ function tangkap(root, game) {
   g.arena.prepend(h('div', { class: 'sky' }, h('span', { class: 'cloud c1' }), h('span', { class: 'cloud c2' })), prompt, basket);
   root.append(controls);
   g.showStart();
-  return () => { stop(); document.removeEventListener('keydown', onKey); document.removeEventListener('keyup', onKeyUp); };
+  return () => { stop(); g.music.stop(); document.removeEventListener('keydown', onKey); document.removeEventListener('keyup', onKeyUp); };
 }
 
 // ======================================================= 3. Pecah Balon
@@ -338,7 +392,7 @@ function balon(root, game) {
   g = shell(root, game, start);
   g.arena.prepend(h('div', { class: 'sky' }, h('span', { class: 'cloud c1' }), h('span', { class: 'cloud c2' })), progress);
   g.showStart();
-  return () => stop();
+  return () => { stop(); g.music.stop(); };
 }
 
 // ======================================================= rute
