@@ -69,6 +69,11 @@ def build_css() -> str:
     return css.replace("url('../assets/fonts/nunito.woff2')", f"url('{font}')")
 
 
+def collect_audio() -> dict[str, str]:
+    """Musik latar permainan, ditanam sebagai data URI agar tetap berbunyi tanpa server."""
+    return {f.name: data_uri(f, "audio/mpeg") for f in sorted((FRONT / "assets/audio").glob("*.mp3"))}
+
+
 def safe_json(obj: object) -> str:
     # Cegah "</script>" di dalam data menutup tag script.
     return json.dumps(obj, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
@@ -77,12 +82,17 @@ def safe_json(obj: object) -> str:
 LOADER = r"""
 (function () {
   var C = window.__METIKA_CONTENT__;
+  var A = window.__METIKA_AUDIO__ || {};
   var nativeFetch = window.fetch.bind(window);
   window.fetch = function (input, init) {
     var url = typeof input === 'string' ? input : input.url;
     var m = url.match(/(?:^|\/)content\/([^?#]+)/);
     if (m && C[m[1]]) {
       return Promise.resolve(new Response(JSON.stringify(C[m[1]]), { headers: { 'Content-Type': 'application/json' } }));
+    }
+    var a = url.match(/(?:^|\/)assets\/audio\/([^?#]+)/);
+    if (a && A[a[1]]) {
+      return nativeFetch(A[a[1]]);
     }
     if (/(^|\/)api\//.test(url) && location.protocol === 'file:') {
       return Promise.resolve(new Response('Tidak ada server', { status: 503 }));
@@ -113,6 +123,7 @@ LOADER = r"""
 def main() -> None:
     modules = collect_modules()
     content = collect_content()
+    audio = collect_audio()
     favicon = data_uri(FRONT / "assets/icons/favicon.png", "image/png")
     html = f"""<!doctype html>
 <html lang="id">
@@ -139,6 +150,7 @@ def main() -> None:
 <script>
 window.__METIKA_CONTENT__ = {safe_json(content)};
 window.__METIKA_MODULES__ = {safe_json(modules)};
+window.__METIKA_AUDIO__ = {safe_json(audio)};
 {LOADER}
 </script>
 </body>
@@ -146,7 +158,7 @@ window.__METIKA_MODULES__ = {safe_json(modules)};
 """
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(html, encoding="utf-8")
-    print(f"[OK] {OUT.relative_to(ROOT)}: {len(modules)} modul JS, {len(content)} file konten, {OUT.stat().st_size / 1024:.0f} KB")
+    print(f"[OK] {OUT.relative_to(ROOT)}: {len(modules)} modul JS, {len(content)} file konten, {len(audio)} musik, {OUT.stat().st_size / 1024:.0f} KB")
 
 
 if __name__ == "__main__":
