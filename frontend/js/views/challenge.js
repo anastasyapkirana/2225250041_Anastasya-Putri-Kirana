@@ -1,4 +1,4 @@
-// Tantangan kartu ✕/✓ (gaya flashcard referensi). Tanpa timer.
+// Tantangan kartu B/S (gaya flashcard referensi). Tanpa timer.
 import { h, html, button, icon, feedback, sound } from '../ui.js';
 import { go } from '../router.js';
 import * as content from '../content.js';
@@ -9,7 +9,7 @@ import { focusHeader } from '../components/layout.js';
 export async function render(root) {
   const deck = await content.challenge();
   const stage = h('div', { class: 'challenge' });
-  root.append(focusHeader({ title: 'Benar atau Salah? ✕/✓', back: '/practice' }), stage);
+  root.append(focusHeader({ title: 'Benar atau Salah?', back: '/practice' }), stage);
 
   function play() {
     const cards = [...deck.cards].sort(() => Math.random() - 0.5).slice(0, deck.roundSize);

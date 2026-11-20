@@ -4,6 +4,7 @@ import * as store from '../store.js';
 import * as content from '../content.js';
 import { canInstall, promptInstall, onInstallChange, isStandalone } from '../pwa.js';
 import { unlockedLevel } from './bank.js';
+import { profileLabel, greeting } from '../engine/anon.js';
 
 export async function render(root) {
   const man = await content.manifest();
@@ -16,7 +17,7 @@ export async function render(root) {
   const started = next && progress[next.id]?.step > 0;
 
   const header = h('header', { class: 'home-head' },
-    h('div', {}, h('p', { class: 'muted' }, profile.guest ? 'Mode tamu' : `Kelas ${profile.classCode} · No. ${profile.studentNo}`), h('h1', {}, 'Halo! 👋')),
+    h('div', {}, h('p', { class: 'muted' }, profile.guest ? 'Mode tamu' : profileLabel(profile)), h('h1', {}, profile.guest ? 'Halo!' : greeting(profile))),
     iconButton('user', 'Profil', () => go('/profile')));
 
   const hero = h('section', { class: 'card hero' },
@@ -31,7 +32,7 @@ export async function render(root) {
       h('div', {}, h('p', { class: 'eyebrow' }, started ? 'Lanjutkan belajar' : 'Mulai belajar'), h('h2', {}, `Modul ${next.order} · ${next.title}`), h('p', { class: 'muted' }, `${next.subtitle} · ± ${next.minutes} menit`)),
       h('span', { class: 'play' }, icon('chevron')))
     : h('a', { href: '#/challenge', class: 'card continue-card' },
-      h('div', {}, h('p', { class: 'eyebrow' }, 'Semua modul selesai! 🎉'), h('h2', {}, 'Coba Tantangan ✕/✓'), h('p', { class: 'muted' }, 'Uji pemahamanmu dengan cepat.')),
+      h('div', {}, h('p', { class: 'eyebrow' }, 'Semua modul selesai! 🎉'), h('h2', {}, 'Coba Tantangan B/S'), h('p', { class: 'muted' }, 'Uji pemahamanmu dengan cepat.')),
       h('span', { class: 'play' }, icon('chevron')));
 
   const tests = store.get('tests', {});

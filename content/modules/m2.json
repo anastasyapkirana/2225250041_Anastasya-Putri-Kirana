@@ -19,7 +19,7 @@
     {
       "kind": "concept",
       "title": "Barisan aritmetika",
-      "text": "Jika bedanya <b>selalu sama</b>, barisan itu disebut <b>barisan aritmetika</b>.",
+      "text": "<b>Barisan aritmetika</b> adalah barisan yang beda dua suku berurutannya <b>selalu sama</b>. Contoh: 5, 8, 11, 14 selalu bertambah 3.",
       "visual": "jumps:5,3,4"
     },
     {

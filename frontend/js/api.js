@@ -13,10 +13,18 @@ function uuid() {
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
 }
 
+// Data inti penelitian tidak pernah dibuang walau antrean penuh.
+const KEEP_TYPES = new Set(['test_done', 'quiz_done', 'module_done', 'challenge_done', 'practice_done']);
+const isCore = (x) => x.kind !== 'event' || KEEP_TYPES.has(x.body?.type);
+
 function enqueue(kind, body) {
   store.update('outbox', [], (box) => {
     box.push({ kind, body });
-    return box.length > OUTBOX_MAX ? box.slice(-OUTBOX_MAX) : box;
+    while (box.length > OUTBOX_MAX) {
+      const i = box.findIndex((x) => !isCore(x));
+      box.splice(i === -1 ? 0 : i, 1);
+    }
+    return box;
   });
 }
 
@@ -47,6 +55,38 @@ export function queueParticipant(profile) {
 }
 
 export const outboxSize = () => store.get('outbox', []).length;
+
+/**
+ * Bagikan semua data yang belum terkirim sebagai file JSON (untuk versi tanpa server).
+ * Antrean tidak dihapus: file boleh dikirim berkali-kali, duplikat dibuang saat digabung.
+ */
+export async function shareDataFile() {
+  const profile = store.getProfile();
+  const data = {
+    app: 'metika', format: 1, app_version: APP_VERSION,
+    anon_id: profile?.anonId || null, exported_at: new Date().toISOString(),
+    items: store.get('outbox', []),
+  };
+  const day = data.exported_at.slice(0, 10);
+  const name = `metika-data-${(data.anon_id || 'tamu').slice(0, 6)}-${day}.json`;
+  const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+  const file = globalThis.File ? new File([blob], name, { type: 'application/json' }) : null;
+  if (file && navigator.canShare?.({ files: [file] })) {
+    try {
+      await navigator.share({ files: [file], title: 'Data Metika' });
+      return 'shared';
+    } catch (err) {
+      if (err?.name === 'AbortError') return 'cancelled';
+    }
+  }
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), { href: url, download: name });
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 10_000);
+  return 'downloaded';
+}
 export const serverStatus = () => serverOk;
 
 async function post(path, body) {

@@ -1,8 +1,9 @@
+import { profileLabel } from '../engine/anon.js';
 import { h, button, icon, toast, confirmSheet } from '../ui.js';
 import { go } from '../router.js';
 import * as store from '../store.js';
 import { pageHeader } from '../components/layout.js';
-import { outboxSize, serverStatus, sync } from '../api.js';
+import { outboxSize, serverStatus, sync, shareDataFile } from '../api.js';
 import { canInstall, promptInstall, isStandalone, isIos, onInstallChange } from '../pwa.js';
 
 function toggle(label, checked, onChange, hint = '') {
@@ -51,7 +52,7 @@ export function render(root) {
     pageHeader('Profil'),
     h('section', { class: 'card profile-card' },
       h('span', { class: 'avatar' }, icon('user', { size: 28 })),
-      h('div', {}, h('b', {}, profile.guest ? 'Tamu' : `Kelas ${profile.classCode}`), h('p', { class: 'muted small' }, profile.guest ? 'Progres hanya tersimpan di HP ini.' : `No. absen ${profile.studentNo} · ID ${profile.anonId.slice(0, 6)}…`))),
+      h('div', {}, h('b', {}, profile.guest ? 'Tamu' : profileLabel(profile)), h('p', { class: 'muted small' }, profile.guest ? 'Progres hanya tersimpan di HP ini.' : `ID ${profile.anonId.slice(0, 6)}…`))),
 
     h('h2', { class: 'section-title' }, 'Pengaturan'),
     h('section', { class: 'card' },
@@ -72,6 +73,13 @@ export function render(root) {
       h('div', {}, h('b', {}, 'Sinkronisasi data'), h('br'), syncText),
       button('Kirim', { kind: 'secondary', cls: 'btn-sm', iconName: 'sync', onClick: async () => { await sync(); drawSync(); toast(outboxSize() ? 'Belum terkirim. Coba saat online.' : 'Terkirim ✓'); } })),
 
+    h('section', { class: 'card share-card' },
+      button('Bagikan file data', { kind: 'secondary', iconName: 'download', onClick: async () => {
+        if (!outboxSize()) { toast('Tidak ada data baru.'); return; }
+        const r = await shareDataFile();
+        if (r === 'downloaded') toast('File tersimpan di folder Download. Kirim lewat WhatsApp.');
+      } })),
+
     h('section', { class: 'danger-zone' },
       button('Reset progres belajar', { kind: 'ghost', onClick: async () => {
         if (!(await confirmSheet('Hapus semua progres, bintang, dan folder Ulas Lagi di HP ini?', { okLabel: 'Ya, reset' }))) return;
@@ -79,8 +87,8 @@ export function render(root) {
         toast('Progres direset');
         go('/');
       } }),
-      button('Ganti kode kelas', { kind: 'ghost', onClick: async () => {
-        if (!(await confirmSheet('Keluar dan masuk dengan kode lain? Progres di HP ini akan dihapus.', { okLabel: 'Ya, ganti kode' }))) return;
+      button('Ganti nama', { kind: 'ghost', onClick: async () => {
+        if (!(await confirmSheet('Keluar dan masuk dengan nama lain? Progres di HP ini akan dihapus.', { okLabel: 'Ya, ganti' }))) return;
         const outbox = store.get('outbox', []);
         store.clearAll();
         store.set('outbox', outbox); // data yang belum terkirim tetap dikirim

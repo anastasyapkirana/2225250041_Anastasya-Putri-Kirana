@@ -1,4 +1,4 @@
-// ID anonim dari kode kelas + nomor absen. Tidak menyimpan nama.
+// ID anonim dari nama + nomor absen. Nama hanya disimpan di HP, tidak dikirim ke server.
 // Memakai hash cyrb53 (non-kriptografis) agar hasilnya sama di semua browser,
 // termasuk halaman http di jaringan lokal (crypto.subtle hanya ada di HTTPS).
 
@@ -32,4 +32,23 @@ export function anonId(classCode, studentNo) {
 
 export function guestId() {
   return anonId(`TAMU-${Date.now()}-${Math.random()}`, 0);
+}
+
+/** Rapikan nama yang diketik: buang spasi berlebih. Nama hanya disimpan di HP. */
+export function normalizeName(name) {
+  return String(name || '').trim().replace(/\s+/g, ' ').slice(0, 40);
+}
+
+/** Label profil, contoh: "CINTA NUR — 08". */
+export function profileLabel(profile) {
+  const who = (profile.name || profile.classCode || '').toUpperCase();
+  const no = String(profile.studentNo ?? '').padStart(2, '0');
+  return `${who} — ${no}`;
+}
+
+/** Sapaan dengan nama depan, contoh: "Halo, Cinta!". */
+export function greeting(profile) {
+  const first = normalizeName(profile?.name || profile?.classCode).split(' ')[0];
+  if (!first) return 'Halo!';
+  return `Halo, ${first.charAt(0).toUpperCase()}${first.slice(1).toLowerCase()}!`;
 }

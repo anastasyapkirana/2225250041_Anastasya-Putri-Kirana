@@ -8,13 +8,13 @@ import { reviewItems } from '../components/question.js';
 import { LEVELS } from './bank.js';
 
 const TOPICS = {
-  pola: { label: 'Suku berikutnya', level: 1 },
-  beda: { label: 'Beda (b)', level: 1 },
+  pola: { label: 'Menentukan suku berikutnya', level: 1 },
+  beda: { label: 'Menentukan beda (b)', level: 1 },
   abn: { label: 'Menentukan a, b, n', level: 2 },
   un: { label: 'Suku ke-n (Uₙ)', level: 3 },
   cari: { label: 'Mencari n, a, b', level: 3 },
 };
-const KIND = { timed: 'Kuis Cepat', bank: 'Bank Soal', module: 'Kuis modul', challenge: 'Tantangan ✕/✓', daily: 'Tantangan Hari Ini', game: 'Permainan' };
+const KIND = { timed: 'Kuis Cepat', bank: 'Bank Soal', module: 'Kuis modul', challenge: 'Tantangan B/S', daily: 'Tantangan Hari Ini', game: 'Permainan' };
 
 const pct = (a, b) => (b ? Math.round((a / b) * 100) : 0);
 

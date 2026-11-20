@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.2",
+  "version": "2026.11.3",
   "modules": [
     { "id": "m1", "order": 1, "title": "Mengenal Pola dan Barisan", "subtitle": "Suku dan nomor suku", "minutes": 8, "file": "modules/m1.json" },
     { "id": "m2", "order": 2, "title": "Beda (b)", "subtitle": "Selisih yang selalu sama", "minutes": 10, "file": "modules/m2.json" },

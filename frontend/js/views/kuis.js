@@ -54,7 +54,7 @@ export async function render(root) {
           h('span', { class: 'muted' }, r.seconds != null ? mmss(r.seconds) : '–'))))) : null,
       h('a', { href: '#/challenge', class: 'card list-row-card' },
         h('span', { class: 'list-icon' }, icon('cards')),
-        h('span', { class: 'list-text' }, h('b', {}, 'Tantangan ✕/✓'), h('small', { class: 'muted' }, 'Mode santai tanpa timer: benar atau salah?')),
+        h('span', { class: 'list-text' }, h('b', {}, 'Tantangan B/S'), h('small', { class: 'muted' }, 'Mode santai tanpa timer: benar atau salah?')),
         icon('chevron'))].filter(Boolean));
   }
 

@@ -4,6 +4,7 @@ import { logEvent } from '../api.js';
 
 export function formulaCard() {
   return h('div', { class: 'formula-card' },
+    html('p', 'formula-def', '<b>Barisan aritmetika</b> adalah barisan yang bedanya (<span class="chip chip-b">b</span>) selalu sama.'),
     html('div', 'formula big', 'U<sub>n</sub> = <span class="chip chip-a">a</span> + (<span class="chip chip-n">n</span> − 1)<span class="chip chip-b">b</span>'),
     html('dl', 'legend', `
       <div><dt><span class="chip chip-a">a</span></dt><dd>suku pertama (U<sub>1</sub>)</dd></div>

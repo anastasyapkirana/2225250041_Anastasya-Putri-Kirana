@@ -373,6 +373,7 @@
 .list-row:hover { background: var(--cobalt-100); }
 .list-icon { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: var(--butter-300); flex: none; }
 .list-text { flex: 1; display: grid; }
+.share-card { gap: 12px; }
 .sync-card { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; }
 .danger-zone { display: grid; gap: 4px; justify-items: center; }
 .danger-zone .btn-ghost { color: var(--error-600); }
@@ -397,8 +398,9 @@
 .brand-name { font-size: 1.7rem; font-weight: 900; letter-spacing: -0.01em; }
 .brand-tag { color: var(--text-muted); font-weight: 700; margin-top: -8px; }
 .welcome-stage { min-height: 300px; display: grid; align-items: center; }
-.welcome-slide { display: grid; gap: 12px; animation: page-in 220ms ease-out; }
-.welcome-art { background: var(--white); border-radius: var(--radius-lg); padding: 20px 12px; box-shadow: var(--shadow-card); min-height: 150px; display: grid; align-items: center; }
+.welcome-slide { display: grid; gap: 12px; justify-items: center; animation: page-in 220ms ease-out; }
+.welcome-slide h2 { margin-top: 20px; }
+.welcome-art { justify-self: stretch; background: var(--white); border-radius: var(--radius-lg); padding: 20px 12px; box-shadow: var(--shadow-card); min-height: 150px; display: grid; align-items: center; }
 .welcome-actions { display: grid; gap: 4px; }
 .join { min-height: 90dvh; justify-content: center; }
 .join-card { gap: 12px; }
@@ -459,6 +461,7 @@
 
 /* ======================================================= kartu rumus */
 .formula-card { display: grid; gap: 12px; }
+.formula-def { margin: 0; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
 .legend { margin: 0; display: grid; gap: 8px; }
 .legend div { display: flex; align-items: center; gap: 12px; }
 .legend dt { min-width: 44px; text-align: center; font-weight: 800; }
