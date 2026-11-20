@@ -1,7 +1,7 @@
 // Ruang Kerja Soal Cerita 5 langkah (FR-10, literasi matematika):
 // Diketahui → Ditanya → Ubah ke barisan → Hitung → Periksa & tafsirkan.
 import { h, html, button, numberInput, choiceList, markChoice, feedback, sound, contextBadge } from '../ui.js';
-import { renderVisual } from './viz.js';
+import { renderVisual, discussionCard } from './viz.js';
 import { checkField } from '../engine/checker.js';
 import { fmt, fmtMoney } from '../engine/format.js';
 import { clean } from '../engine/expr.js';
@@ -189,7 +189,8 @@ export async function storyWorkspace(container, step, { moduleId, onComplete }) 
     current = STEPS.length;
     setState();
     storyCard.open = false;
-    container.append(h('div', { class: 'card summary-card' }, html('p', '', '<b>Soal cerita selesai!</b> Kamu sudah merumuskan, menghitung, dan menafsirkan.')));
+    container.append(h('div', { class: 'card summary-card' }, html('p', '', '<b>Soal cerita selesai!</b> Kamu sudah merumuskan, menghitung, dan menafsirkan.')),
+      discussionCard(step.discussion) || '');
     logEvent('story_step', { module_id: moduleId, item_id: step.id, payload: { step: 'done', ms: Math.round(performance.now() - startedAt) } });
     onComplete && onComplete();
   }

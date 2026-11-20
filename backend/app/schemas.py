@@ -67,6 +67,13 @@ class FadedStep(_Strict):
     steps: list[str] = Field(min_length=1)
 
 
+class Discussion(_Strict):
+    """Pembahasan setelah soal selesai: ilustrasi (opsional) + langkah."""
+
+    visual: str | None = None
+    steps: list[str] = Field(min_length=1)
+
+
 class ExplainOption(_Strict):
     text: str
     correct: bool
@@ -77,7 +84,9 @@ class ExplainStep(_Strict):
     kind: Literal["explain"]
     title: str
     question: str
+    visual: str | None = None
     options: list[ExplainOption] = Field(min_length=2)
+    discussion: Discussion | None = None
 
 
 class PracticeStep(_Strict):
@@ -111,6 +120,7 @@ class StoryStep(_Strict):
     money: bool = False
     interpret: Choice
     reason: Choice | None = None
+    discussion: Discussion | None = None
 
 
 class McqStep(_Strict):
@@ -118,9 +128,11 @@ class McqStep(_Strict):
     title: str
     context: str | None = None
     question: str
+    visual: str | None = None
     options: list[str] = Field(min_length=2)
     answer: int
     explanation: str
+    discussion: Discussion | None = None
 
 
 class QuizItem(_Strict):
@@ -196,6 +208,7 @@ class QuestionTemplate(_Strict):
     hints: list[str] = Field(min_length=3, max_length=3)
     solution: list[str] = Field(min_length=1)
     check: bool = False
+    visual: str | None = None
 
 
 class Misconception(_Strict):

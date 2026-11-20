@@ -4,6 +4,7 @@ import { go } from '../router.js';
 import * as store from '../store.js';
 import { pageHeader, focusHeader } from '../components/layout.js';
 import { practiceSession, reviewItems } from '../components/question.js';
+import { renderVisual } from '../components/viz.js';
 
 export async function render(root, { mode } = {}) {
   const items = await reviewItems('flagged');
@@ -31,6 +32,7 @@ export async function render(root, { mode } = {}) {
   const list = h('ol', { class: 'saved-list' });
   items.forEach((q, i) => {
     const sol = h('div', { class: 'saved-solution hidden' },
+      renderVisual(q.visual),
       html('ol', 'solution', q.solution.map((s) => `<li>${s}</li>`).join('')),
       ...q.fields.filter((f) => f.type === 'choice').map((f) => html('p', '', `Jawaban: <b>${f.options[f.answer]}</b>`)));
     const toggleBtn = button('Lihat pembahasan', { kind: 'ghost', cls: 'btn-sm', iconName: 'eye', onClick: () => {

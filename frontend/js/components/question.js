@@ -7,6 +7,7 @@ import { checkField, calcCheck } from '../engine/checker.js';
 import { fmt } from '../engine/format.js';
 import { generate, instantiate, questionKey } from '../engine/generator.js';
 import * as content from '../content.js';
+import { renderVisual } from './viz.js';
 
 let uid = 0;
 const GENERIC_WRONG = 'Periksa lagi langkahmu, atau buka petunjuk 💡.';
@@ -185,6 +186,10 @@ export function questionCard(q, opts) {
       });
       fb.replaceChildren(feedback('hint', 'Pembahasan', sol + choiceAnswer + '<p>Soal ini masuk folder <b>Soal sulit</b> untuk diulas lagi.</p>'));
     }
+    // Ilustrasi pembahasan diletakkan tepat sebelum langkah penyelesaian.
+    const pic = renderVisual(q.visual);
+    const solEl = fb.querySelector('.solution');
+    if (pic && solEl) solEl.before(pic);
     primary.querySelector('span').textContent = opts.lastLabel || 'Lanjut';
     primary.focus();
   }

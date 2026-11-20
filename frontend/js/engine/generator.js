@@ -67,7 +67,25 @@ export function instantiate(tid, tpl, env) {
     hints: tpl.hints.map((h) => render(h, env)),
     solution: tpl.solution.map((s) => render(s, env)),
     check: Boolean(tpl.check),
+    visual: resolveVisual(tpl.visual, env),
   };
+}
+
+/**
+ * Ubah spesifikasi visual template ("leap:a,b,n") menjadi angka ("leap:5,3,10").
+ * Argumen berupa nama variabel diambil dari env; angka dibiarkan.
+ */
+export function resolveVisual(spec, env) {
+  if (!spec) return null;
+  const [kind, argStr = ''] = spec.split(':');
+  if (!argStr) return kind;
+  const args = argStr.split(',').map((x) => {
+    const name = x.trim();
+    if (name in env) return String(env[name]);
+    if (Number.isFinite(Number(name))) return name;
+    throw new Error(`Variabel visual tidak dikenal: ${name}`);
+  });
+  return `${kind}:${args.join(',')}`;
 }
 
 export function generate(tid, tpl, seed = newSeed()) {

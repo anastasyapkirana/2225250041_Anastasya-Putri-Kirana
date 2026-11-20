@@ -420,6 +420,19 @@
 .post { fill: var(--cobalt-500); }
 .post-a { fill: var(--cobalt-700); }
 .seat { fill: var(--cobalt-500); }
+.pot { fill: var(--game-wood); }
+.leaf { fill: none; stroke: var(--game-pad-dark); stroke-width: 2; stroke-linecap: round; }
+.row-hl { fill: var(--butter-300); stroke: var(--butter-500); stroke-width: 1.5; }
+.nl-strong { font-weight: 900; }
+.nl-idx { font: 700 11px var(--font); fill: var(--navy-600); text-anchor: middle; }
+.nl-brace { fill: none; stroke: var(--navy-600); stroke-width: 1.5; }
+.nl-arc-dash { stroke-dasharray: 5 4; }
+.bar-a { fill: var(--cobalt-500); }
+.bar-b { fill: var(--butter-500); stroke: var(--navy-600); stroke-width: 1; stroke-dasharray: 3 2; }
+.viz-svg.viz-tall { max-height: 340px; }
+.discussion-card { display: grid; gap: var(--space-3); margin-top: var(--space-3); background: var(--butter-100); }
+.discussion-card .viz { background: var(--white); border-radius: var(--radius-md); padding: var(--space-3) var(--space-2); }
+.feedback-body .viz { margin: var(--space-2) 0; background: var(--white); border-radius: var(--radius-md); padding: var(--space-2); }
 .viz-terms, .viz-diff { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 6px; }
 .term {
   display: grid; justify-items: center; min-width: 52px; padding: 8px 6px 6px; border-radius: 14px;

@@ -17,6 +17,21 @@ from ..schemas import Manifest, Misconception, Module, QuestionTemplate, QuizIte
 from . import solver
 
 BLANK_RE = re.compile(r"\[\[([^\]]+)\]\]")
+
+# Jenis visual di frontend/js/components/viz.js -> (jumlah argumen minimal, maksimal).
+VISUALS: dict[str, tuple[int, int]] = {
+    "terms": (1, 12),
+    "diff": (2, 12),
+    "jumps": (3, 3),
+    "tiles": (3, 3),
+    "matches": (1, 1),
+    "posts": (1, 1),
+    "seats": (3, 4),
+    "pots": (3, 4),
+    "derive": (2, 2),
+    "leap": (3, 3),
+    "compare": (5, 6),
+}
 SAMPLES_PER_TEMPLATE = 200
 
 
@@ -58,6 +73,27 @@ def clear_cache() -> None:
 # ---------------------------------------------------------------- validasi
 
 
+def check_visual(where: str, spec: str | None, errors: list[str], env: dict[str, float] | None = None) -> None:
+    """Periksa spesifikasi "jenis:arg,..." (env: nama variabel template yang boleh dipakai)."""
+    if not spec:
+        return
+    kind, _, arg_str = spec.partition(":")
+    if kind not in VISUALS:
+        errors.append(f"{where}: visual '{kind}' tidak dikenal")
+        return
+    args = [a.strip() for a in arg_str.split(",")] if arg_str else []
+    lo, hi = VISUALS[kind]
+    if not lo <= len(args) <= hi:
+        errors.append(f"{where}: visual '{kind}' butuh {lo}-{hi} argumen, ada {len(args)}")
+    for arg in args:
+        if env is not None and arg in env:
+            continue
+        try:
+            float(arg)
+        except ValueError:
+            errors.append(f"{where}: argumen visual '{arg}' bukan angka/variabel")
+
+
 def _check_choice(where: str, options: list[str], answer: float, errors: list[str]) -> None:
     if not (float(answer).is_integer() and 0 <= int(answer) < len(options)):
         errors.append(f"{where}: indeks jawaban {answer} di luar pilihan")
@@ -84,6 +120,8 @@ def validate_template(tid: str, tpl: QuestionTemplate, misc: dict[str, Misconcep
             texts = [tpl.prompt, *tpl.hints, *tpl.solution, *(f.label for f in tpl.fields)]
             for text in texts:
                 solver.render(text, env)
+            if i == 0:
+                check_visual(f"{tid}.visual", tpl.visual, errors, env)
             for field in tpl.fields:
                 ans = solver.field_answer(field.model_dump(), env)
                 if not math.isfinite(ans) or not float(ans).is_integer():
@@ -153,6 +191,10 @@ def validate_all() -> list[str]:
             errors.append(f"{entry.id}: langkah terakhir harus kuis")
         for idx, step in enumerate(mod.steps):
             where = f"{entry.id}[{idx}:{step.kind}]"
+            check_visual(f"{where}.visual", getattr(step, "visual", None), errors)
+            disc = getattr(step, "discussion", None)
+            if disc is not None:
+                check_visual(f"{where}.discussion", disc.visual, errors)
             if step.kind == "practice":
                 for tid in step.templates:
                     if tid not in tpls:

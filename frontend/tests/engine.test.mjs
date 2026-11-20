@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 import { evaluate, clean } from '../js/engine/expr.js';
 import { fmt, render, parseNumber } from '../js/engine/format.js';
-import { generate, instantiate, sample, questionKey } from '../js/engine/generator.js';
+import { generate, instantiate, sample, questionKey, resolveVisual } from '../js/engine/generator.js';
 import { checkField, calcCheck } from '../js/engine/checker.js';
 import { anonId } from '../js/engine/anon.js';
 
@@ -105,4 +105,11 @@ test('anonId deterministik dan sesuai pola backend', () => {
   assert.equal(id, anonId('8A', 12));
   assert.match(id, /^[a-z0-9]{8,32}$/);
   assert.notEqual(id, anonId('8A', 13));
+});
+
+test('resolveVisual mengganti nama variabel dengan nilai dari env', () => {
+  assert.equal(resolveVisual('leap:a,b,n', { a: 5, b: -3, n: 10 }), 'leap:5,-3,10');
+  assert.equal(resolveVisual('seats:a,2,3', { a: 12 }), 'seats:12,2,3');
+  assert.equal(resolveVisual(null, {}), null);
+  assert.throws(() => resolveVisual('leap:x', {}));
 });

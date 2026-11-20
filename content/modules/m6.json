@@ -20,14 +20,123 @@
       "context": "Masyarakat",
       "text": "Baris pertama gedung pertunjukan berisi <mark>12 kursi</mark>. Setiap baris di belakangnya <mark>bertambah 3 kursi</mark>. Berapa kursi di <mark>baris ke-15</mark>?",
       "visual": "seats:12,3,3",
-      "known": { "options": ["Baris 1 ada 12 kursi, tiap baris bertambah 3", "Baris 1 ada 15 kursi, tiap baris bertambah 12", "Ada 15 baris, tiap baris 3 kursi"], "answer": 0, "hint": "Cari angka awal dan angka yang ditambahkan tiap baris." },
-      "asked": { "options": ["Jumlah semua kursi di gedung", "Banyak kursi di baris ke-15", "Banyak baris di gedung"], "answer": 1, "hint": "Baca kalimat tanya di akhir cerita." },
-      "model": { "a": 12, "b": 3, "n": 15 },
+      "known": {
+        "options": [
+          "Baris 1 ada 12 kursi, tiap baris bertambah 3",
+          "Baris 1 ada 15 kursi, tiap baris bertambah 12",
+          "Ada 15 baris, tiap baris 3 kursi"
+        ],
+        "answer": 0,
+        "hint": "Cari angka awal dan angka yang ditambahkan tiap baris."
+      },
+      "asked": {
+        "options": [
+          "Jumlah semua kursi di gedung",
+          "Banyak kursi di baris ke-15",
+          "Banyak baris di gedung"
+        ],
+        "answer": 1,
+        "hint": "Baca kalimat tanya di akhir cerita."
+      },
+      "model": {
+        "a": 12,
+        "b": 3,
+        "n": 15
+      },
       "target": "un",
       "expected": 54,
       "unit": "kursi",
-      "interpret": { "question": "Jadi, apa arti 54?", "options": ["Baris ke-15 berisi 54 kursi", "Gedung punya 54 baris", "Total kursi semua baris ada 54"], "answer": 0 },
-      "reason": { "question": "Mungkinkah ada baris yang berisi tepat 100 kursi?", "options": ["Mungkin", "Tidak mungkin"], "answer": 1, "explanation": "(100 − 12) ÷ 3 = 29,33… Bukan bilangan bulat, jadi tidak ada baris berisi tepat 100 kursi." }
+      "interpret": {
+        "question": "Jadi, apa arti 54?",
+        "options": [
+          "Baris ke-15 berisi 54 kursi",
+          "Gedung punya 54 baris",
+          "Total kursi semua baris ada 54"
+        ],
+        "answer": 0
+      },
+      "reason": {
+        "question": "Mungkinkah ada baris yang berisi tepat 100 kursi?",
+        "options": [
+          "Mungkin",
+          "Tidak mungkin"
+        ],
+        "answer": 1,
+        "explanation": "(100 − 12) ÷ 3 = 29,33… Bukan bilangan bulat, jadi tidak ada baris berisi tepat 100 kursi."
+      },
+      "discussion": {
+        "visual": "seats:12,3,3,15",
+        "steps": [
+          "Baris 1 ada 12 kursi, lalu tiap baris <b>+3</b>. Jadi a = 12, b = 3, n = 15.",
+          "Dari baris 1 ke baris 15 ada 15 − 1 = <b>14 kali</b> tambah kursi.",
+          "Kursi tambahannya: 14 × 3 = 42 kursi.",
+          "U<sub>15</sub> = 12 + 42 = <b>54 kursi</b>.",
+          "Cek: makin ke belakang barisnya makin panjang, jadi 54 &gt; 12 masuk akal."
+        ]
+      }
+    },
+    {
+      "kind": "story",
+      "id": "C4",
+      "title": "Pot bunga sekolah",
+      "context": "Masyarakat",
+      "text": "Di halaman sekolah, baris pertama berisi <mark>4 pot</mark> bunga. Setiap baris berikutnya <mark>3 pot lebih banyak</mark>. Berapa pot di <mark>baris ke-11</mark>?",
+      "visual": "pots:4,3,3",
+      "known": {
+        "options": [
+          "Baris 1 ada 4 pot, tiap baris bertambah 3",
+          "Baris 1 ada 3 pot, tiap baris bertambah 4",
+          "Ada 11 baris, tiap baris 4 pot"
+        ],
+        "answer": 0,
+        "hint": "Angka awal = pot di baris 1. Lalu cari tambahannya."
+      },
+      "asked": {
+        "options": [
+          "Jumlah semua pot di 11 baris",
+          "Banyak pot di baris ke-11",
+          "Banyak baris pot"
+        ],
+        "answer": 1,
+        "hint": "Perhatikan kata \"di baris ke-11\"."
+      },
+      "model": {
+        "a": 4,
+        "b": 3,
+        "n": 11
+      },
+      "target": "un",
+      "expected": 34,
+      "unit": "pot",
+      "interpret": {
+        "question": "Apa arti 34?",
+        "options": [
+          "Ada 34 baris pot",
+          "Baris ke-11 berisi 34 pot",
+          "Total pot semua baris ada 34"
+        ],
+        "answer": 1
+      },
+      "reason": {
+        "question": "Baris ke berapa yang berisi 25 pot?",
+        "options": [
+          "Baris ke-7",
+          "Baris ke-8",
+          "Baris ke-9"
+        ],
+        "answer": 1,
+        "explanation": "(25 − 4) ÷ 3 + 1 = 7 + 1 = 8. Jadi baris ke-8."
+      },
+      "discussion": {
+        "visual": "pots:4,3,3,11",
+        "steps": [
+          "Ubah ke barisan: 4, 7, 10, 13, … dengan a = 4 dan b = 3.",
+          "Model matematikanya: U<sub>n</sub> = 4 + (n − 1) × 3.",
+          "Kalau dirapikan: 4 + 3n − 3 = <b>3n + 1</b>. Cek n = 1: 3 + 1 = 4 ✓",
+          "Baris ke-11: U<sub>11</sub> = 3 × 11 + 1 = <b>34 pot</b>.",
+          "Dengan rumus 3n + 1, baris berapa pun bisa dihitung cepat."
+        ]
+      }
     },
     {
       "kind": "story",
@@ -35,15 +144,61 @@
       "title": "Tabungan Rina",
       "context": "Personal",
       "text": "Rina menabung <mark>Rp5.000</mark> di minggu pertama. Setiap minggu ia menabung <mark>Rp2.000 lebih banyak</mark> dari minggu sebelumnya. Berapa yang ia tabung di <mark>minggu ke-8</mark>?",
-      "known": { "options": ["Minggu 1: Rp5.000, tiap minggu +Rp2.000", "Minggu 1: Rp2.000, tiap minggu +Rp5.000", "Setiap minggu selalu Rp5.000"], "answer": 0, "hint": "Berapa uang di minggu pertama? Bertambah berapa tiap minggu?" },
-      "asked": { "options": ["Uang yang ditabung di minggu ke-8", "Total tabungan selama 8 minggu", "Banyak minggu menabung"], "answer": 0, "hint": "Perhatikan kata \"di minggu ke-8\"." },
-      "model": { "a": 5000, "b": 2000, "n": 8 },
+      "known": {
+        "options": [
+          "Minggu 1: Rp5.000, tiap minggu +Rp2.000",
+          "Minggu 1: Rp2.000, tiap minggu +Rp5.000",
+          "Setiap minggu selalu Rp5.000"
+        ],
+        "answer": 0,
+        "hint": "Berapa uang di minggu pertama? Bertambah berapa tiap minggu?"
+      },
+      "asked": {
+        "options": [
+          "Uang yang ditabung di minggu ke-8",
+          "Total tabungan selama 8 minggu",
+          "Banyak minggu menabung"
+        ],
+        "answer": 0,
+        "hint": "Perhatikan kata \"di minggu ke-8\"."
+      },
+      "model": {
+        "a": 5000,
+        "b": 2000,
+        "n": 8
+      },
       "target": "un",
       "expected": 19000,
       "unit": "rupiah",
       "money": true,
-      "interpret": { "question": "Apa arti 19.000?", "options": ["Rina menabung Rp19.000 di minggu ke-8", "Total tabungan Rina selama 8 minggu Rp19.000"], "answer": 0 },
-      "reason": { "question": "Di minggu ke berapa Rina menabung Rp25.000?", "options": ["Minggu ke-10", "Minggu ke-11", "Minggu ke-12"], "answer": 1, "explanation": "(25.000 − 5.000) ÷ 2.000 + 1 = 10 + 1 = 11." }
+      "interpret": {
+        "question": "Apa arti 19.000?",
+        "options": [
+          "Rina menabung Rp19.000 di minggu ke-8",
+          "Total tabungan Rina selama 8 minggu Rp19.000"
+        ],
+        "answer": 0
+      },
+      "reason": {
+        "question": "Di minggu ke berapa Rina menabung Rp25.000?",
+        "options": [
+          "Minggu ke-10",
+          "Minggu ke-11",
+          "Minggu ke-12"
+        ],
+        "answer": 1,
+        "explanation": "(25.000 − 5.000) ÷ 2.000 + 1 = 10 + 1 = 11."
+      },
+      "discussion": {
+        "visual": "leap:5000,2000,8",
+        "steps": [
+          "Minggu 1 Rina menabung Rp5.000. Tiap minggu naik Rp2.000.",
+          "Dari minggu 1 ke minggu 8 ada 8 − 1 = <b>7 kali</b> kenaikan.",
+          "Kenaikannya: 7 × Rp2.000 = Rp14.000.",
+          "Minggu ke-8: Rp5.000 + Rp14.000 = <b>Rp19.000</b>.",
+          "Ingat: ini uang yang ditabung <i>pada</i> minggu ke-8, bukan total tabungannya."
+        ]
+      }
     },
     {
       "kind": "story",
@@ -51,33 +206,150 @@
       "title": "Tarif parkir",
       "context": "Masyarakat",
       "text": "Tarif parkir: <mark>jam pertama Rp3.000</mark>, lalu <mark>Rp2.000 untuk setiap jam berikutnya</mark>. Berapa biaya parkir selama <mark>6 jam</mark>?",
-      "known": { "options": ["Parkir 1 jam Rp3.000, tiap tambahan jam +Rp2.000", "Setiap jam selalu Rp2.000", "Parkir 1 jam Rp2.000, tiap jam +Rp3.000"], "answer": 0, "hint": "Biaya total: 1 jam = 3.000, 2 jam = 5.000, 3 jam = 7.000, …" },
-      "asked": { "options": ["Biaya total parkir 6 jam", "Tarif jam ke-6 saja", "Lama parkir"], "answer": 0, "hint": "Yang dibayar adalah biaya total." },
-      "model": { "a": 3000, "b": 2000, "n": 6 },
+      "known": {
+        "options": [
+          "Parkir 1 jam Rp3.000, tiap tambahan jam +Rp2.000",
+          "Setiap jam selalu Rp2.000",
+          "Parkir 1 jam Rp2.000, tiap jam +Rp3.000"
+        ],
+        "answer": 0,
+        "hint": "Biaya total: 1 jam = 3.000, 2 jam = 5.000, 3 jam = 7.000, …"
+      },
+      "asked": {
+        "options": [
+          "Biaya total parkir 6 jam",
+          "Tarif jam ke-6 saja",
+          "Lama parkir"
+        ],
+        "answer": 0,
+        "hint": "Yang dibayar adalah biaya total."
+      },
+      "model": {
+        "a": 3000,
+        "b": 2000,
+        "n": 6
+      },
       "target": "un",
       "expected": 13000,
       "unit": "rupiah",
       "money": true,
-      "interpret": { "question": "Apa arti 13.000?", "options": ["Parkir 6 jam membayar Rp13.000 total", "Jam ke-6 saja membayar Rp13.000"], "answer": 0 },
-      "reason": { "question": "Ayah punya Rp20.000. Paling lama berapa jam ia bisa parkir?", "options": ["8 jam", "9 jam", "10 jam"], "answer": 1, "explanation": "9 jam = 3.000 + 8 × 2.000 = Rp19.000 (cukup). 10 jam = Rp21.000 (tidak cukup)." }
+      "interpret": {
+        "question": "Apa arti 13.000?",
+        "options": [
+          "Parkir 6 jam membayar Rp13.000 total",
+          "Jam ke-6 saja membayar Rp13.000"
+        ],
+        "answer": 0
+      },
+      "reason": {
+        "question": "Ayah punya Rp20.000. Paling lama berapa jam ia bisa parkir?",
+        "options": [
+          "8 jam",
+          "9 jam",
+          "10 jam"
+        ],
+        "answer": 1,
+        "explanation": "9 jam = 3.000 + 8 × 2.000 = Rp19.000 (cukup). 10 jam = Rp21.000 (tidak cukup)."
+      },
+      "discussion": {
+        "visual": "leap:3000,2000,6",
+        "steps": [
+          "Biaya total: 1 jam Rp3.000, 2 jam Rp5.000, 3 jam Rp7.000, …",
+          "Jam pertama sudah dibayar Rp3.000. Masih ada 6 − 1 = <b>5 jam</b> lagi.",
+          "Biaya jam tambahan: 5 × Rp2.000 = Rp10.000.",
+          "Total parkir 6 jam: Rp3.000 + Rp10.000 = <b>Rp13.000</b>."
+        ]
+      }
+    },
+    {
+      "kind": "mcq",
+      "title": "Pojok Literasi: pilih susunan kursi",
+      "context": "Penalaran",
+      "question": "Panitia lomba punya dua cara menata kursi.<br><b>Susunan A</b>: baris 1 ada 10 kursi, tiap baris +4.<br><b>Susunan B</b>: baris 1 ada 16 kursi, tiap baris +2.<br>Mana yang kursinya lebih banyak di <b>baris ke-7</b>?",
+      "visual": "compare:10,4,16,2,3",
+      "options": [
+        "Susunan A",
+        "Susunan B",
+        "Sama banyak"
+      ],
+      "answer": 0,
+      "explanation": "Baris ke-7: A = 10 + 6 × 4 = 34 kursi. B = 16 + 6 × 2 = 28 kursi. Susunan A lebih banyak.",
+      "discussion": {
+        "visual": "compare:10,4,16,2,7",
+        "steps": [
+          "Susunan A: U<sub>7</sub> = 10 + (7 − 1) × 4 = 10 + 24 = <b>34 kursi</b>.",
+          "Susunan B: U<sub>7</sub> = 16 + (7 − 1) × 2 = 16 + 12 = <b>28 kursi</b>.",
+          "Lihat gambar: awalnya B lebih banyak. Di baris 4 sama-sama 22 kursi. Setelah itu A menyalip.",
+          "Kenapa? Tambahan A (+4) lebih besar dari B (+2). Lama-lama yang tambahannya besar pasti unggul.",
+          "Jadi panitia sebaiknya memilih <b>Susunan A</b>."
+        ]
+      }
     },
     {
       "kind": "mcq",
       "title": "Pojok Literasi: pilih paket",
       "context": "Penalaran",
       "question": "Paket A: bulan ke-1 Rp20.000, naik Rp5.000 tiap bulan. Paket B: bulan ke-1 Rp35.000, naik Rp2.000 tiap bulan. Di bulan ke-7, paket mana yang lebih murah?",
-      "options": ["Paket A", "Paket B", "Sama"],
+      "options": [
+        "Paket A",
+        "Paket B",
+        "Sama"
+      ],
       "answer": 1,
-      "explanation": "Bulan ke-7: A = 20.000 + 6 × 5.000 = 50.000. B = 35.000 + 6 × 2.000 = 47.000. Paket B lebih murah. Di bulan ke-6 harganya sama, yaitu 45.000."
+      "explanation": "Bulan ke-7: A = 20.000 + 6 × 5.000 = 50.000. B = 35.000 + 6 × 2.000 = 47.000. Paket B lebih murah. Di bulan ke-6 harganya sama, yaitu 45.000.",
+      "discussion": {
+        "visual": "compare:20,5,35,2,7,1",
+        "steps": [
+          "Paket A bulan ke-7: 20.000 + 6 × 5.000 = <b>Rp50.000</b>.",
+          "Paket B bulan ke-7: 35.000 + 6 × 2.000 = <b>Rp47.000</b>.",
+          "Lihat gambar: bulan 1–5 Paket A lebih murah, bulan ke-6 sama (Rp45.000), mulai bulan ke-7 Paket B lebih murah."
+        ]
+      }
     },
     {
       "kind": "mcq",
       "title": "Pojok Literasi: pilih paket",
       "context": "Penalaran",
       "question": "Rina hanya butuh internet selama 4 bulan. Paket mana yang sebaiknya ia pilih?",
-      "options": ["Paket A, karena sampai bulan ke-5 harganya lebih murah", "Paket B, karena kenaikannya lebih kecil", "Sama saja"],
+      "options": [
+        "Paket A, karena sampai bulan ke-5 harganya lebih murah",
+        "Paket B, karena kenaikannya lebih kecil",
+        "Sama saja"
+      ],
       "answer": 0,
       "explanation": "Bulan 1–5 Paket A selalu lebih murah (misalnya bulan ke-4: A = 35.000, B = 41.000). Kenaikan kecil Paket B baru menguntungkan setelah bulan ke-6."
+    },
+    {
+      "kind": "explain",
+      "title": "Periksa jawaban Nadia",
+      "question": "Barisan: <b>4, 7, 10, 13, …</b><br>Nadia mencari suku ke-6 dengan cara:<span class=\"formula\">U<sub>6</sub> = 4 + (6 × 3) = 22</span>Setujukah kamu dengan jawaban Nadia?",
+      "visual": "terms:4,7,10,13",
+      "options": [
+        {
+          "text": "Setuju, jawabannya 22.",
+          "correct": false,
+          "why": "Coba tulis sukunya satu per satu: 4, 7, 10, 13, 16, … Suku ke-6 bukan 22."
+        },
+        {
+          "text": "Tidak setuju. Seharusnya dikali (6 − 1), jadi U<sub>6</sub> = 19.",
+          "correct": true,
+          "why": "Tepat! Dari U<sub>1</sub> ke U<sub>6</sub> hanya ada 5 lompatan."
+        },
+        {
+          "text": "Tidak setuju. Seharusnya a = 3, jadi 3 + 6 × 3 = 21.",
+          "correct": false,
+          "why": "a adalah suku pertama, yaitu 4. Angka 3 adalah bedanya (b)."
+        }
+      ],
+      "discussion": {
+        "visual": "jumps:4,3,6",
+        "steps": [
+          "Hitung busur di gambar: dari 4 sampai 19 ada <b>5 lompatan</b>, bukan 6.",
+          "Kesalahan Nadia: ia menulis 6 × 3. Padahal U<sub>1</sub> tidak perlu melompat.",
+          "Cara yang benar: U<sub>6</sub> = 4 + (6 − 1) × 3 = 4 + 15 = <b>19</b>.",
+          "Cek dengan menulis sukunya: 4, 7, 10, 13, 16, <b>19</b> ✓"
+        ]
+      }
     },
     {
       "kind": "story",
@@ -85,14 +357,58 @@
       "title": "Latihan push-up",
       "context": "Personal",
       "text": "Dimas push-up <mark>10 kali</mark> di hari pertama. Setiap hari ia menambah <mark>5 kali</mark>. Pada <mark>hari ke berapa</mark> ia push-up <mark>60 kali</mark>?",
-      "known": { "options": ["Hari 1: 10 kali, tiap hari +5", "Hari 1: 5 kali, tiap hari +10", "Hari 1: 60 kali, tiap hari −5"], "answer": 0, "hint": "Angka awal 10, tambahannya 5." },
-      "asked": { "options": ["Banyak push-up di hari ke-60", "Hari ke berapa push-up 60 kali", "Total push-up selama 60 hari"], "answer": 1, "hint": "Kali ini yang dicari nomor sukunya (n)." },
-      "model": { "a": 10, "b": 5, "un": 60 },
+      "known": {
+        "options": [
+          "Hari 1: 10 kali, tiap hari +5",
+          "Hari 1: 5 kali, tiap hari +10",
+          "Hari 1: 60 kali, tiap hari −5"
+        ],
+        "answer": 0,
+        "hint": "Angka awal 10, tambahannya 5."
+      },
+      "asked": {
+        "options": [
+          "Banyak push-up di hari ke-60",
+          "Hari ke berapa push-up 60 kali",
+          "Total push-up selama 60 hari"
+        ],
+        "answer": 1,
+        "hint": "Kali ini yang dicari nomor sukunya (n)."
+      },
+      "model": {
+        "a": 10,
+        "b": 5,
+        "un": 60
+      },
       "target": "n",
       "expected": 11,
       "unit": "hari",
-      "interpret": { "question": "Apa arti 11?", "options": ["Di hari ke-11 Dimas push-up 60 kali", "Dimas push-up 11 kali setiap hari"], "answer": 0 },
-      "reason": { "question": "Masuk akalkah Dimas terus menambah 5 kali setiap hari selama setahun?", "options": ["Masuk akal", "Kurang masuk akal"], "answer": 1, "explanation": "Hari ke-365 berarti 10 + 364 × 5 = 1.830 push-up sehari. Tubuh punya batas, jadi pola ini hanya cocok untuk waktu singkat." }
+      "interpret": {
+        "question": "Apa arti 11?",
+        "options": [
+          "Di hari ke-11 Dimas push-up 60 kali",
+          "Dimas push-up 11 kali setiap hari"
+        ],
+        "answer": 0
+      },
+      "reason": {
+        "question": "Masuk akalkah Dimas terus menambah 5 kali setiap hari selama setahun?",
+        "options": [
+          "Masuk akal",
+          "Kurang masuk akal"
+        ],
+        "answer": 1,
+        "explanation": "Hari ke-365 berarti 10 + 364 × 5 = 1.830 push-up sehari. Tubuh punya batas, jadi pola ini hanya cocok untuk waktu singkat."
+      },
+      "discussion": {
+        "visual": "leap:10,5,11",
+        "steps": [
+          "Hari 1: 10 kali, tiap hari +5. Kali ini yang dicari <b>nomor harinya</b> (n).",
+          "Dari 10 ke 60 bertambah 60 − 10 = 50 kali.",
+          "Banyak lompatan: 50 ÷ 5 = <b>10 lompatan</b>.",
+          "10 lompatan berarti ada 10 + 1 = 11 suku. Jadi di <b>hari ke-11</b>."
+        ]
+      }
     },
     {
       "kind": "story",
@@ -100,14 +416,57 @@
       "title": "Tanaman cabai",
       "context": "Ilmiah",
       "text": "Tinggi tanaman cabai di minggu ke-1 adalah <mark>12 cm</mark>. Setiap minggu tingginya <mark>bertambah 1,5 cm</mark>. Berapa tingginya di <mark>minggu ke-10</mark>?",
-      "known": { "options": ["Minggu 1: 12 cm, tiap minggu +1,5 cm", "Minggu 1: 1,5 cm, tiap minggu +12 cm", "Minggu 10: 12 cm"], "answer": 0, "hint": "Tinggi awal dan pertambahannya." },
-      "asked": { "options": ["Tinggi tanaman di minggu ke-10", "Pertambahan tinggi selama 10 minggu", "Banyak minggu"], "answer": 0, "hint": "Baca kalimat tanyanya." },
-      "model": { "a": 12, "b": 1.5, "n": 10 },
+      "known": {
+        "options": [
+          "Minggu 1: 12 cm, tiap minggu +1,5 cm",
+          "Minggu 1: 1,5 cm, tiap minggu +12 cm",
+          "Minggu 10: 12 cm"
+        ],
+        "answer": 0,
+        "hint": "Tinggi awal dan pertambahannya."
+      },
+      "asked": {
+        "options": [
+          "Tinggi tanaman di minggu ke-10",
+          "Pertambahan tinggi selama 10 minggu",
+          "Banyak minggu"
+        ],
+        "answer": 0,
+        "hint": "Baca kalimat tanyanya."
+      },
+      "model": {
+        "a": 12,
+        "b": 1.5,
+        "n": 10
+      },
       "target": "un",
       "expected": 25.5,
       "unit": "cm",
-      "interpret": { "question": "Apa arti 25,5?", "options": ["Di minggu ke-10 tinggi tanaman 25,5 cm", "Tanaman tumbuh 25,5 cm setiap minggu"], "answer": 0 },
-      "reason": { "question": "Apakah tanaman ini akan terus tumbuh 1,5 cm setiap minggu selamanya?", "options": ["Ya, selamanya", "Tidak, pola ini hanya berlaku sementara"], "answer": 1, "explanation": "Tanaman punya batas tinggi. Model matematika hanya cocok untuk rentang waktu tertentu." }
+      "interpret": {
+        "question": "Apa arti 25,5?",
+        "options": [
+          "Di minggu ke-10 tinggi tanaman 25,5 cm",
+          "Tanaman tumbuh 25,5 cm setiap minggu"
+        ],
+        "answer": 0
+      },
+      "reason": {
+        "question": "Apakah tanaman ini akan terus tumbuh 1,5 cm setiap minggu selamanya?",
+        "options": [
+          "Ya, selamanya",
+          "Tidak, pola ini hanya berlaku sementara"
+        ],
+        "answer": 1,
+        "explanation": "Tanaman punya batas tinggi. Model matematika hanya cocok untuk rentang waktu tertentu."
+      },
+      "discussion": {
+        "visual": "leap:12,1.5,10",
+        "steps": [
+          "Tinggi awal a = 12 cm, tumbuh b = 1,5 cm tiap minggu, n = 10.",
+          "Minggu 1 ke minggu 10 ada 9 kali tumbuh: 9 × 1,5 = 13,5 cm.",
+          "Tinggi minggu ke-10: 12 + 13,5 = <b>25,5 cm</b>."
+        ]
+      }
     },
     {
       "kind": "story",
@@ -115,14 +474,58 @@
       "title": "Suhu di gunung",
       "context": "Ilmiah",
       "text": "Suhu di pos 1 jalur pendakian <mark>26 °C</mark>. Setiap pos berikutnya <mark>2 °C lebih dingin</mark>. Berapa suhu di <mark>pos ke-6</mark>?",
-      "known": { "options": ["Pos 1: 26 °C, tiap pos turun 2 °C", "Pos 1: 26 °C, tiap pos naik 2 °C", "Pos 1: 2 °C, tiap pos turun 26 °C"], "answer": 0, "hint": "\"Lebih dingin\" berarti suhunya turun." },
-      "asked": { "options": ["Suhu di pos ke-6", "Banyak pos", "Selisih suhu pos 1 dan pos 6"], "answer": 0, "hint": "Baca kalimat tanyanya." },
-      "model": { "a": 26, "b": -2, "n": 6 },
+      "known": {
+        "options": [
+          "Pos 1: 26 °C, tiap pos turun 2 °C",
+          "Pos 1: 26 °C, tiap pos naik 2 °C",
+          "Pos 1: 2 °C, tiap pos turun 26 °C"
+        ],
+        "answer": 0,
+        "hint": "\"Lebih dingin\" berarti suhunya turun."
+      },
+      "asked": {
+        "options": [
+          "Suhu di pos ke-6",
+          "Banyak pos",
+          "Selisih suhu pos 1 dan pos 6"
+        ],
+        "answer": 0,
+        "hint": "Baca kalimat tanyanya."
+      },
+      "model": {
+        "a": 26,
+        "b": -2,
+        "n": 6
+      },
       "target": "un",
       "expected": 16,
       "unit": "°C",
-      "interpret": { "question": "Apa arti 16?", "options": ["Suhu di pos ke-6 adalah 16 °C", "Suhu turun 16 °C setiap pos"], "answer": 0 },
-      "reason": { "question": "Jika polanya berlanjut, di pos ke berapa suhunya 0 °C?", "options": ["Pos ke-13", "Pos ke-14", "Pos ke-26"], "answer": 1, "explanation": "0 = 26 + (n − 1)(−2) → n − 1 = 13 → n = 14." }
+      "interpret": {
+        "question": "Apa arti 16?",
+        "options": [
+          "Suhu di pos ke-6 adalah 16 °C",
+          "Suhu turun 16 °C setiap pos"
+        ],
+        "answer": 0
+      },
+      "reason": {
+        "question": "Jika polanya berlanjut, di pos ke berapa suhunya 0 °C?",
+        "options": [
+          "Pos ke-13",
+          "Pos ke-14",
+          "Pos ke-26"
+        ],
+        "answer": 1,
+        "explanation": "0 = 26 + (n − 1)(−2) → n − 1 = 13 → n = 14."
+      },
+      "discussion": {
+        "visual": "leap:26,-2,6",
+        "steps": [
+          "\"Lebih dingin\" artinya suhu turun, jadi bedanya negatif: b = −2.",
+          "Pos 1 ke pos 6 ada 5 kali turun: 5 × (−2) = −10.",
+          "Suhu pos ke-6: 26 + (−10) = <b>16 °C</b>."
+        ]
+      }
     },
     {
       "kind": "story",
@@ -130,24 +533,103 @@
       "title": "Membaca tabel",
       "context": "Personal",
       "text": "Tabel tabungan Sinta:<table class=\"mini-table\"><tr><th>Minggu ke-</th><td>1</td><td>2</td><td>3</td></tr><tr><th>Tabungan (Rp)</th><td>7.000</td><td>10.000</td><td>13.000</td></tr></table>Jika polanya tetap, berapa tabungan Sinta di <mark>minggu ke-12</mark>?",
-      "known": { "options": ["Minggu 1: Rp7.000, tiap minggu +Rp3.000", "Minggu 1: Rp3.000, tiap minggu +Rp7.000", "Tiap minggu +Rp10.000"], "answer": 0, "hint": "Bandingkan dua kolom yang berdekatan." },
-      "asked": { "options": ["Tabungan di minggu ke-12", "Banyak minggu sampai Rp12.000"], "answer": 0, "hint": "Baca kalimat tanyanya." },
-      "model": { "a": 7000, "b": 3000, "n": 12 },
+      "known": {
+        "options": [
+          "Minggu 1: Rp7.000, tiap minggu +Rp3.000",
+          "Minggu 1: Rp3.000, tiap minggu +Rp7.000",
+          "Tiap minggu +Rp10.000"
+        ],
+        "answer": 0,
+        "hint": "Bandingkan dua kolom yang berdekatan."
+      },
+      "asked": {
+        "options": [
+          "Tabungan di minggu ke-12",
+          "Banyak minggu sampai Rp12.000"
+        ],
+        "answer": 0,
+        "hint": "Baca kalimat tanyanya."
+      },
+      "model": {
+        "a": 7000,
+        "b": 3000,
+        "n": 12
+      },
       "target": "un",
       "expected": 40000,
       "unit": "rupiah",
       "money": true,
-      "interpret": { "question": "Apa arti 40.000?", "options": ["Tabungan Sinta di minggu ke-12 adalah Rp40.000", "Sinta menabung selama 40 minggu"], "answer": 0 }
+      "interpret": {
+        "question": "Apa arti 40.000?",
+        "options": [
+          "Tabungan Sinta di minggu ke-12 adalah Rp40.000",
+          "Sinta menabung selama 40 minggu"
+        ],
+        "answer": 0
+      },
+      "discussion": {
+        "visual": "leap:7000,3000,12",
+        "steps": [
+          "Dari tabel: 10.000 − 7.000 = 3.000 dan 13.000 − 10.000 = 3.000. Bedanya tetap, b = 3.000.",
+          "Minggu 1 ke minggu 12 ada 11 kali naik: 11 × 3.000 = 33.000.",
+          "Minggu ke-12: 7.000 + 33.000 = <b>Rp40.000</b>."
+        ]
+      }
     },
     {
       "kind": "quiz",
       "title": "Kuis Modul 6",
       "items": [
-        { "type": "numeric", "prompt": "Baris pertama aula berisi 15 kursi. Setiap baris bertambah 2 kursi. Banyak kursi di baris ke-10 adalah …", "answer": 33, "explanation": "15 + 9 × 2 = 15 + 18 = 33 kursi." },
-        { "type": "numeric", "prompt": "Andi menabung Rp4.000 di minggu pertama, lalu Rp1.000 lebih banyak setiap minggu. Uang yang ditabung di minggu ke-12 adalah Rp…", "answer": 15000, "explanation": "4.000 + 11 × 1.000 = 15.000." },
-        { "type": "mcq", "prompt": "Lilin setinggi 20 cm berkurang 2 cm setiap jam. Pernyataan yang benar adalah …", "options": ["b = 2", "b = −2", "a = 2"], "answer": 1, "explanation": "Tingginya berkurang, jadi bedanya negatif: b = −2." },
-        { "type": "numeric", "prompt": "Lilin itu tingginya 20 cm di jam ke-1 dan berkurang 2 cm setiap jam. Tingginya di jam ke-8 adalah … cm", "answer": 6, "explanation": "20 + 7 × (−2) = 20 − 14 = 6 cm." },
-        { "type": "mcq", "prompt": "Barisan kursi 12, 15, 18, … Mungkinkah ada baris berisi tepat 40 kursi?", "options": ["Mungkin, di baris ke-10", "Tidak mungkin, karena (40 − 12) ÷ 3 bukan bilangan bulat"], "answer": 1, "explanation": "(40 − 12) ÷ 3 = 9,33… Jadi tidak ada baris dengan tepat 40 kursi." }
+        {
+          "type": "numeric",
+          "prompt": "Baris pertama aula berisi 15 kursi. Setiap baris bertambah 2 kursi. Banyak kursi di baris ke-10 adalah …",
+          "answer": 33,
+          "explanation": "15 + 9 × 2 = 15 + 18 = 33 kursi."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Baris pertama berisi 6 pot. Setiap baris bertambah 5 pot. Rumus banyak pot di baris ke-n adalah …",
+          "options": [
+            "U<sub>n</sub> = 6n + 5",
+            "U<sub>n</sub> = 5n + 1",
+            "U<sub>n</sub> = 5n + 6"
+          ],
+          "answer": 1,
+          "explanation": "U<sub>n</sub> = 6 + (n − 1) × 5 = 6 + 5n − 5 = 5n + 1. Cek n = 1: 5 + 1 = 6 ✓"
+        },
+        {
+          "type": "numeric",
+          "prompt": "Andi menabung Rp4.000 di minggu pertama, lalu Rp1.000 lebih banyak setiap minggu. Uang yang ditabung di minggu ke-12 adalah Rp…",
+          "answer": 15000,
+          "explanation": "4.000 + 11 × 1.000 = 15.000."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Lilin setinggi 20 cm berkurang 2 cm setiap jam. Pernyataan yang benar adalah …",
+          "options": [
+            "b = 2",
+            "b = −2",
+            "a = 2"
+          ],
+          "answer": 1,
+          "explanation": "Tingginya berkurang, jadi bedanya negatif: b = −2."
+        },
+        {
+          "type": "numeric",
+          "prompt": "Lilin itu tingginya 20 cm di jam ke-1 dan berkurang 2 cm setiap jam. Tingginya di jam ke-8 adalah … cm",
+          "answer": 6,
+          "explanation": "20 + 7 × (−2) = 20 − 14 = 6 cm."
+        },
+        {
+          "type": "mcq",
+          "prompt": "Barisan kursi 12, 15, 18, … Mungkinkah ada baris berisi tepat 40 kursi?",
+          "options": [
+            "Mungkin, di baris ke-10",
+            "Tidak mungkin, karena (40 − 12) ÷ 3 bukan bilangan bulat"
+          ],
+          "answer": 1,
+          "explanation": "(40 − 12) ÷ 3 = 9,33… Jadi tidak ada baris dengan tepat 40 kursi."
+        }
       ]
     }
   ]

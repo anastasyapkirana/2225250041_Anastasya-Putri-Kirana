@@ -4,7 +4,7 @@ import { go } from '../router.js';
 import * as store from '../store.js';
 import * as content from '../content.js';
 import { logEvent, queueSurvey, sync } from '../api.js';
-import { renderVisual } from '../components/viz.js';
+import { renderVisual, discussionCard } from '../components/viz.js';
 import { practiceSession } from '../components/question.js';
 import { runQuiz } from '../components/quiz.js';
 import { storyWorkspace } from '../components/story.js';
@@ -158,12 +158,16 @@ export async function render(root, { id }) {
           sound(o.correct ? 'correct' : 'wrong');
           fb.replaceChildren(feedback(o.correct ? 'correct' : 'wrong', o.correct ? 'Tepat!' : 'Kurang tepat', o.why));
           logEvent('answer', { module_id: id, item_id: `explain:${idx}`, payload: { correct: o.correct, choice: i } });
-          if (o.correct) { buttons.forEach((b) => { b.disabled = true; }); done(); }
+          if (o.correct) {
+            buttons.forEach((b) => { b.disabled = true; });
+            if (s.discussion) el.append(discussionCard(s.discussion));
+            done();
+          }
         },
       });
       el.append(h('article', { class: 'card step-card' },
         h('p', { class: 'eyebrow' }, 'Jelaskan dengan kata-katamu'), h('h2', { tabindex: '-1' }, s.title),
-        html('p', 'step-text', s.question), list, fb));
+        html('div', 'step-text', s.question), renderVisual(s.visual), list, fb));
     },
 
     mcq(el, s, { markComplete: done }) {
@@ -180,6 +184,7 @@ export async function render(root, { id }) {
             if (!ok) buttons[s.answer].classList.add('is-correct');
             buttons.forEach((b) => { b.disabled = true; });
             fb.replaceChildren(feedback(ok ? 'correct' : 'hint', ok ? 'Tepat!' : 'Pembahasan', s.explanation));
+            if (s.discussion) el.append(discussionCard(s.discussion));
             done();
           } else {
             fb.replaceChildren(feedback('wrong', 'Coba lagi', 'Baca lagi soalnya, lalu hitung setiap pilihan.'));
@@ -188,7 +193,7 @@ export async function render(root, { id }) {
       });
       el.append(h('article', { class: 'card step-card' },
         contextBadge(`Pojok Literasi · ${s.context || 'Literasi'}`), h('h2', { tabindex: '-1' }, s.title),
-        html('p', 'step-text', s.question), list, fb));
+        html('div', 'step-text', s.question), renderVisual(s.visual), list, fb));
     },
 
     practice(el, s, { markComplete: done }) {

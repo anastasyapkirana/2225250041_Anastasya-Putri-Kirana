@@ -14,6 +14,7 @@
       "Selisihnya {b}. Tambahkan ke suku terakhir.",
       "U<sub>5</sub> = {u4} + {b|p} = ▢"
     ],
+    "visual": "diff:u1,u2,u3,u4,u5,u6",
     "solution": [
       "Beda: {u2} − {u1|p} = {b}",
       "U<sub>5</sub> = {u4} + {b|p} = <b>{u5}</b>",
@@ -34,6 +35,7 @@
       "Hitung {u2} − {u1|p}.",
       "b = {u2} − {u1|p} = ▢"
     ],
+    "visual": "diff:u1,u2,u3,u4",
     "solution": [
       "b = U<sub>2</sub> − U<sub>1</sub> = {u2} − {u1|p} = <b>{b}</b>",
       "Cek: {u3} − {u2|p} = {u3 - u2}"
@@ -53,6 +55,7 @@
       "Aritmetika jika semua selisihnya sama.",
       "Selisihnya: {u2 - u1}, {u3 - u2}, {u4 - u3}, {u5 - u4}. Sama semua?"
     ],
+    "visual": "diff:u1,u2,u3,u4,u5",
     "solution": [
       "Selisihnya: {u2 - u1}, {u3 - u2}, {u4 - u3}, {u5 - u4}."
     ]
@@ -73,6 +76,7 @@
       "b = {u2} − {u1|p}. n adalah angka kecil di U<sub>{n}</sub>.",
       "a = {u1}, b = ▢, n = ▢"
     ],
+    "visual": "leap:a,b,n",
     "solution": [
       "a = suku pertama = <b>{a}</b>",
       "b = {u2} − {u1|p} = <b>{b}</b>",
@@ -93,6 +97,7 @@
       "a = {a}, b = {b}, n = {n}. Masukkan ke U<sub>n</sub> = a + (n − 1)b.",
       "U<sub>{n}</sub> = {a} + ({n} − 1) × {b|p} = {a} + ▢"
     ],
+    "visual": "leap:a,b,n",
     "solution": [
       "a = {a}, b = {b}, n = {n}",
       "U<sub>{n}</sub> = {a} + ({n} − 1) × {b|p}",
@@ -116,6 +121,7 @@
       "a = suku pertama. b = U<sub>2</sub> − U<sub>1</sub>. n = {n}.",
       "U<sub>{n}</sub> = {a} + ({n} − 1) × {b|p} = {a} + ▢"
     ],
+    "visual": "leap:a,b,n",
     "solution": [
       "a = {a}, b = {b}, n = {n}",
       "U<sub>{n}</sub> = {a} + ({n} − 1) × {b|p}",
@@ -139,6 +145,7 @@
       "{un} = {a} + (n − 1) × {b|p}. Pindahkan {a} dulu.",
       "(n − 1) × {b|p} = {un - a}, jadi n − 1 = ▢"
     ],
+    "visual": "leap:a,b,n",
     "solution": [
       "{un} = {a} + (n − 1) × {b|p}",
       "(n − 1) × {b|p} = {un} − {a|p} = {un - a}",
@@ -161,6 +168,7 @@
       "{un} = {a} + {n - 1}b. Kurangi kedua ruas dengan {a|p}.",
       "{n - 1}b = {un - a}, jadi b = ▢"
     ],
+    "visual": "leap:a,b,n",
     "solution": [
       "{un} = {a} + ({n} − 1)b = {a} + {n - 1}b",
       "{n - 1}b = {un} − {a|p} = {un - a}",
